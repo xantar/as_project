@@ -1,4 +1,6 @@
 AsProject::Application.routes.draw do
+  resources :sources
+
   resources :groups
 
   resources :statuses
@@ -17,6 +19,8 @@ AsProject::Application.routes.draw do
 
   resources :dragons
 
+  resources :sources
+
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
   match 'signup' => 'users#new', :as => :signup
@@ -28,6 +32,8 @@ AsProject::Application.routes.draw do
   resources :sessions
 
   resources :users
+
+  root :to => "dragons#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

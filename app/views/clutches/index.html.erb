@@ -9,7 +9,7 @@
     <th>M Dragon</th>
     <th>F Dragon</th>
     <th>Comments</th>
-    <th>User</th>
+    <th>Employee</th>
   </tr>
   <% for clutch in @clutches %>
     <tr>
@@ -17,10 +17,10 @@
       <td><%= clutch.viable %></td>
       <td><%= clutch.questionable %></td>
       <td><%= clutch.total %></td>
-      <td><%= clutch.m_dragon_id %></td>
-      <td><%= clutch.f_dragon_id %></td>
+      <td><%= clutch.m_dragon.name %></td>
+      <td><%= clutch.f_dragon.name %></td>
       <td><%= clutch.comments %></td>
-      <td><%= clutch.user_id %></td>
+      <td><% if clutch.user %><%= clutch.user.firstname %><% end %></td>
       <td><%= link_to "Show", clutch %></td>
       <td><%= link_to "Edit", edit_clutch_path(clutch) %></td>
       <td><%= link_to "Destroy", clutch, :confirm => 'Are you sure?', :method => :delete %></td>

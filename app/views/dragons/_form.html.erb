@@ -6,27 +6,29 @@
   </p>
   <p>
     <%= f.label :clutch_id %><br />
-    <%= f.number_field :clutch_id %>
+    <%= f.collection_select :clutch_id, Clutch.all, :id, :name %>
   </p>
   <p>
     <%= f.label :source_id %><br />
-    <%= f.number_field :source_id %>
+    <%= f.collection_select :source_id, Source.all, :id, :name %>
   </p>
   <p>
     <%= f.label :group_id %><br />
-    <%= f.number_field :group_id %>
+    <%= f.collection_select :group_id, Group.all, :id, :name %>
   </p>
   <p>
     <%= f.label :status_id %><br />
-    <%= f.number_field :status_id %>
+   <%= f.collection_select :status_id, Status.all, :id, :name %>
   </p>
   <p>
     <%= f.label :male %><br />
     <%= f.check_box :male %>
   </p>
   <p>
+<% if logged_in? %>
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id, current_user.id %>
   </p>
+<% end %>
   <p><%= f.submit %></p>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112032239) do
+ActiveRecord::Schema.define(:version => 20111112045658) do
 
   create_table "clutches", :force => true do |t|
     t.date     "laid_on"
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(:version => 20111112032239) do
     t.datetime "updated_at"
   end
 
+  create_table "sources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "statuses", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -80,6 +86,9 @@ ActiveRecord::Schema.define(:version => 20111112032239) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.integer  "access_level"
   end
 
   create_table "weight_types", :force => true do |t|
