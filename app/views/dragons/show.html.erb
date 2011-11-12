@@ -1,0 +1,36 @@
+<% title "Dragon" %>
+
+<p>
+  <strong>Number:</strong>
+  <%= @dragon.number %>
+</p>
+<p>
+  <strong>Clutch:</strong>
+  <%= @dragon.clutch_id %>
+</p>
+<p>
+  <strong>Source:</strong>
+  <%= @dragon.source_id %>
+</p>
+<p>
+  <strong>Group:</strong>
+  <%= @dragon.group_id %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @dragon.status_id %>
+</p>
+<p>
+  <strong>Male:</strong>
+  <%= @dragon.male %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @dragon.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_dragon_path(@dragon) %> |
+  <%= link_to "Destroy", @dragon, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", dragons_path %>
+</p>

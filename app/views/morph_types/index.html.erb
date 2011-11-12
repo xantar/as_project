@@ -1,0 +1,17 @@
+<% title "Morph Types" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for morph_type in @morph_types %>
+    <tr>
+      <td><%= morph_type.name %></td>
+      <td><%= link_to "Show", morph_type %></td>
+      <td><%= link_to "Edit", edit_morph_type_path(morph_type) %></td>
+      <td><%= link_to "Destroy", morph_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Morph Type", new_morph_type_path %></p>

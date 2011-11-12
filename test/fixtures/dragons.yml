@@ -1,0 +1,17 @@
+one:
+  number: MyString
+  clutch_id: 1
+  source_id: 1
+  group_id: 1
+  status_id: 1
+  male: false
+  user_id: 1
+
+two:
+  number: MyString
+  clutch_id: 1
+  source_id: 1
+  group_id: 1
+  status_id: 1
+  male: false
+  user_id: 1

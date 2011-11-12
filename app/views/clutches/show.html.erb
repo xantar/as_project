@@ -1,0 +1,40 @@
+<% title "Clutch" %>
+
+<p>
+  <strong>Laid On:</strong>
+  <%= @clutch.laid_on %>
+</p>
+<p>
+  <strong>Viable:</strong>
+  <%= @clutch.viable %>
+</p>
+<p>
+  <strong>Questionable:</strong>
+  <%= @clutch.questionable %>
+</p>
+<p>
+  <strong>Total:</strong>
+  <%= @clutch.total %>
+</p>
+<p>
+  <strong>M Dragon:</strong>
+  <%= @clutch.m_dragon_id %>
+</p>
+<p>
+  <strong>F Dragon:</strong>
+  <%= @clutch.f_dragon_id %>
+</p>
+<p>
+  <strong>Comments:</strong>
+  <%= @clutch.comments %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @clutch.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_clutch_path(@clutch) %> |
+  <%= link_to "Destroy", @clutch, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", clutches_path %>
+</p>

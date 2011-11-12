@@ -1,0 +1,36 @@
+<%= form_for @clutch do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :laid_on %><br />
+    <%= f.date_select :laid_on %>
+  </p>
+  <p>
+    <%= f.label :viable %><br />
+    <%= f.number_field :viable %>
+  </p>
+  <p>
+    <%= f.label :questionable %><br />
+    <%= f.number_field :questionable %>
+  </p>
+  <p>
+    <%= f.label :total %><br />
+    <%= f.number_field :total %>
+  </p>
+  <p>
+    <%= f.label :m_dragon_id %><br />
+    <%= f.number_field :m_dragon_id %>
+  </p>
+  <p>
+    <%= f.label :f_dragon_id %><br />
+    <%= f.number_field :f_dragon_id %>
+  </p>
+  <p>
+    <%= f.label :comments %><br />
+    <%= f.text_area :comments %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

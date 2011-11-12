@@ -1,4 +1,22 @@
 AsProject::Application.routes.draw do
+  resources :groups
+
+  resources :statuses
+
+  resources :hatches
+
+  resources :clutches
+
+  resources :morph_types
+
+  resources :morphs
+
+  resources :weight_types
+
+  resources :weights
+
+  resources :dragons
+
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
   match 'signup' => 'users#new', :as => :signup

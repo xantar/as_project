@@ -1,0 +1,31 @@
+<% title "Clutches" %>
+
+<table>
+  <tr>
+    <th>Laid On</th>
+    <th>Viable</th>
+    <th>Questionable</th>
+    <th>Total</th>
+    <th>M Dragon</th>
+    <th>F Dragon</th>
+    <th>Comments</th>
+    <th>User</th>
+  </tr>
+  <% for clutch in @clutches %>
+    <tr>
+      <td><%= clutch.laid_on %></td>
+      <td><%= clutch.viable %></td>
+      <td><%= clutch.questionable %></td>
+      <td><%= clutch.total %></td>
+      <td><%= clutch.m_dragon_id %></td>
+      <td><%= clutch.f_dragon_id %></td>
+      <td><%= clutch.comments %></td>
+      <td><%= clutch.user_id %></td>
+      <td><%= link_to "Show", clutch %></td>
+      <td><%= link_to "Edit", edit_clutch_path(clutch) %></td>
+      <td><%= link_to "Destroy", clutch, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Clutch", new_clutch_path %></p>

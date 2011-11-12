@@ -1,0 +1,13 @@
+one:
+  dragon_id: 1
+  weighed_on: 2011-11-11
+  weight: 1
+  weight_type_id: 1
+  user_id: 1
+
+two:
+  dragon_id: 1
+  weighed_on: 2011-11-11
+  weight: 1
+  weight_type_id: 1
+  user_id: 1

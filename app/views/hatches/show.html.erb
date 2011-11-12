@@ -1,0 +1,24 @@
+<% title "Hatch" %>
+
+<p>
+  <strong>Clutch:</strong>
+  <%= @hatch.clutch_id %>
+</p>
+<p>
+  <strong>Out On:</strong>
+  <%= @hatch.out_on %>
+</p>
+<p>
+  <strong>Hatchlings:</strong>
+  <%= @hatch.hatchlings %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @hatch.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_hatch_path(@hatch) %> |
+  <%= link_to "Destroy", @hatch, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", hatches_path %>
+</p>

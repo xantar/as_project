@@ -1,0 +1,24 @@
+<%= form_for @weight do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :dragon_id %><br />
+    <%= f.number_field :dragon_id %>
+  </p>
+  <p>
+    <%= f.label :weighed_on %><br />
+    <%= f.date_select :weighed_on %>
+  </p>
+  <p>
+    <%= f.label :weight %><br />
+    <%= f.number_field :weight %>
+  </p>
+  <p>
+    <%= f.label :weight_type_id %><br />
+    <%= f.number_field :weight_type_id %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

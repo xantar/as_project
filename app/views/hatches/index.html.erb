@@ -1,0 +1,23 @@
+<% title "Hatches" %>
+
+<table>
+  <tr>
+    <th>Clutch</th>
+    <th>Out On</th>
+    <th>Hatchlings</th>
+    <th>User</th>
+  </tr>
+  <% for hatch in @hatches %>
+    <tr>
+      <td><%= hatch.clutch_id %></td>
+      <td><%= hatch.out_on %></td>
+      <td><%= hatch.hatchlings %></td>
+      <td><%= hatch.user_id %></td>
+      <td><%= link_to "Show", hatch %></td>
+      <td><%= link_to "Edit", edit_hatch_path(hatch) %></td>
+      <td><%= link_to "Destroy", hatch, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Hatch", new_hatch_path %></p>

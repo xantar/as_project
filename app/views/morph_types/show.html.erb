@@ -1,0 +1,12 @@
+<% title "Morph Type" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @morph_type.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_morph_type_path(@morph_type) %> |
+  <%= link_to "Destroy", @morph_type, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", morph_types_path %>
+</p>

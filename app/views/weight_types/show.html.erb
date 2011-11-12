@@ -1,0 +1,12 @@
+<% title "Weight Type" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @weight_type.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_weight_type_path(@weight_type) %> |
+  <%= link_to "Destroy", @weight_type, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", weight_types_path %>
+</p>

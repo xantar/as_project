@@ -1,0 +1,28 @@
+<% title "Weight" %>
+
+<p>
+  <strong>Dragon:</strong>
+  <%= @weight.dragon_id %>
+</p>
+<p>
+  <strong>Weighed On:</strong>
+  <%= @weight.weighed_on %>
+</p>
+<p>
+  <strong>Weight:</strong>
+  <%= @weight.weight %>
+</p>
+<p>
+  <strong>Weight Type:</strong>
+  <%= @weight.weight_type_id %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @weight.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_weight_path(@weight) %> |
+  <%= link_to "Destroy", @weight, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", weights_path %>
+</p>

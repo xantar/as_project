@@ -1,0 +1,29 @@
+<% title "Dragons" %>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Clutch</th>
+    <th>Source</th>
+    <th>Group</th>
+    <th>Status</th>
+    <th>Male</th>
+    <th>User</th>
+  </tr>
+  <% for dragon in @dragons %>
+    <tr>
+      <td><%= dragon.number %></td>
+      <td><%= dragon.clutch_id %></td>
+      <td><%= dragon.source_id %></td>
+      <td><%= dragon.group_id %></td>
+      <td><%= dragon.status_id %></td>
+      <td><%= dragon.male %></td>
+      <td><%= dragon.user_id %></td>
+      <td><%= link_to "Show", dragon %></td>
+      <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
+      <td><%= link_to "Destroy", dragon, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Dragon", new_dragon_path %></p>

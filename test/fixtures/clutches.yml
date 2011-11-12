@@ -1,0 +1,19 @@
+one:
+  laid_on: 2011-11-11
+  viable: 1
+  questionable: 1
+  total: 1
+  m_dragon_id: 1
+  f_dragon_id: 1
+  comments: MyText
+  user_id: 1
+
+two:
+  laid_on: 2011-11-11
+  viable: 1
+  questionable: 1
+  total: 1
+  m_dragon_id: 1
+  f_dragon_id: 1
+  comments: MyText
+  user_id: 1
