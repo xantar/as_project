@@ -14,7 +14,7 @@ class MorphsController < ApplicationController
   def create
     @morph = Morph.new(params[:morph])
     if @morph.save
-      redirect_to @morph, :notice => "Successfully created morph."
+      redirect_to session[:referer], :notice => "Successfully created morph."
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class MorphsController < ApplicationController
   def update
     @morph = Morph.find(params[:id])
     if @morph.update_attributes(params[:morph])
-      redirect_to @morph, :notice  => "Successfully updated morph."
+      redirect_to session[:referer], :notice  => "Successfully updated morph."
     else
       render :action => 'edit'
     end

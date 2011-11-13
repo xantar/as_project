@@ -12,6 +12,17 @@ a {
   color: #0000FF;
 }
 
+nav {
+  background: #000;
+}
+
+nav a {
+  color: #0000FF;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 15px;
+}
+
 .clear {
   clear: both;
   height: 0;

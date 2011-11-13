@@ -4,13 +4,11 @@
   <tr>
     <th>Dragon</th>
     <th>Morph Type</th>
-    <th>User</th>
   </tr>
   <% for morph in @morphs %>
     <tr>
-      <td><%= morph.dragon_id %></td>
-      <td><%= morph.morph_type %></td>
-      <td><%= morph.user_id %></td>
+      <td><%= morph.dragon.number %></td>
+      <td><%= morph.morph_type.name %></td>
       <td><%= link_to "Show", morph %></td>
       <td><%= link_to "Edit", edit_morph_path(morph) %></td>
       <td><%= link_to "Destroy", morph, :confirm => 'Are you sure?', :method => :delete %></td>

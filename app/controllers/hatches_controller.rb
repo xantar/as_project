@@ -14,7 +14,7 @@ class HatchesController < ApplicationController
   def create
     @hatch = Hatch.new(params[:hatch])
     if @hatch.save
-      redirect_to @hatch, :notice => "Successfully created hatch."
+      redirect_to session[:referer], :notice => "Successfully created hatch."
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class HatchesController < ApplicationController
   def update
     @hatch = Hatch.find(params[:id])
     if @hatch.update_attributes(params[:hatch])
-      redirect_to @hatch, :notice  => "Successfully updated hatch."
+      redirect_to session[:referer], :notice  => "Successfully updated hatch."
     else
       render :action => 'edit'
     end

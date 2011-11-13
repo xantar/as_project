@@ -29,8 +29,18 @@
   <%= @clutch.comments %>
 </p>
 <p>
-  <strong>Entered:</strong>
-  <% if @clutch.user %><%= @clutch.user.firstname %><% end %>
+  <strong>Hatches:</strong>
+  <table>
+  <th>Date:</th>
+  <th>Hatchlings</th>
+  <% @clutch.hatches.each do |h| %>
+  <tr>
+    <td><%= h.out_on %></td>
+    <td><%= h.hatchlings %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to "Add New Hatch", new_clutch_hatch_path(@clutch.id) %>
 </p>
 
 <p>

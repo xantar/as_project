@@ -18,20 +18,36 @@
   </p>
   <p>
     <%= f.label :m_dragon_id %><br />
+    <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male %>
     <%= f.collection_select :m_dragon_id, Dragon.find(:all, :conditions => 
                                                                 { :male => true,
-                                                             :status_id => 2,
+                                                             :status_id => 1,
+                                                                }
+    ), :id, :number, :selected => params[:dragon_id] %>
+    <% else %>
+    <%= f.collection_select :m_dragon_id, Dragon.find(:all, :conditions => 
+                                                                { :male => true,
+                                                             :status_id => 1,
                                                                 }
     ), :id, :number %>
+    <% end %>
   </p>
   <p>
     <%= f.label :f_dragon_id %><br />
+    <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male %>
     <%= f.collection_select :f_dragon_id, Dragon.find(:all, :conditions => 
                                                                 { :male => false,
-                                                             :status_id => 2
+                                                             :status_id => 1,
                                                                 }
     ), :id, :number %>
- </p>
+    <% else %>
+    <%= f.collection_select :f_dragon_id, Dragon.find(:all, :conditions => 
+                                                                { :male => false,
+                                                             :status_id => 1,
+                                                                }
+    ), :id, :number, :selected => params[:dragon_id] %>
+    <% end %>
+  </p>
   <p>
     <%= f.label :comments %><br />
     <%= f.text_area :comments %>

@@ -7,7 +7,11 @@ AsProject::Application.routes.draw do
 
   resources :hatches
 
-  resources :clutches
+  resources :clutches do
+
+    resources :hatches
+
+  end
 
   resources :morph_types
 
@@ -22,6 +26,8 @@ AsProject::Application.routes.draw do
     resources :weights
 
     resources :morphs
+
+    resources :clutches
 
   end
 

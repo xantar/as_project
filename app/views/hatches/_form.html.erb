@@ -2,7 +2,7 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :clutch_id %><br />
-    <%= f.collection_select :clutch_id, Clutch.all, :id, :name %>
+    <%= f.collection_select :clutch_id, Clutch.all, :id, :name, :selected => params[:clutch_id] %>
   </p>
   <p>
     <%= f.label :out_on %><br />

@@ -11,6 +11,7 @@ class Dragon < ActiveRecord::Base
   belongs_to :user
 
   has_many :weights
-  has_many :clutches
+  has_many :clutches , :foreign_key => "m_dragon_id"
+  has_many :clutches , :foreign_key => "f_dragon_id"
   has_many :morphs
 end

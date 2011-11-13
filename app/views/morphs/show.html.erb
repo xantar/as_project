@@ -2,17 +2,12 @@
 
 <p>
   <strong>Dragon:</strong>
-  <%= @morph.dragon_id %>
+  <%= @morph.dragon.number %>
 </p>
 <p>
   <strong>Morph Type:</strong>
-  <%= @morph.morph_type %>
+  <%= @morph.morph_type.name %>
 </p>
-<p>
-  <strong>User:</strong>
-  <%= @morph.user_id %>
-</p>
-
 <p>
   <%= link_to "Edit", edit_morph_path(@morph) %> |
   <%= link_to "Destroy", @morph, :confirm => 'Are you sure?', :method => :delete %> |

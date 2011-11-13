@@ -27,9 +27,9 @@
 <p>
   <strong>Morph Characteristics:</strong>
   <table>
-  <% @dragon.morphs.each do |w| %>
+  <% @dragon.morphs.each do |m| %>
   <tr>
-    <td><%= w.morph_type.name %></td>
+    <td><%= m.morph_type.name %></td>
   </tr>
   <% end %>
   </table>
@@ -51,6 +51,27 @@
   <% end %>
   </table>
   <%= link_to "Add New Weight", new_dragon_weight_path(@dragon.id) %>
+</p>
+
+<p>
+  <strong>Clutch History:</strong>
+  <table>
+  <th>Date</th>
+  <th>Mate</th>
+  <th>Viable</th>
+  <th>Total</th>
+  <th>Hatched</th>
+  <% @dragon.clutches.each do |c| %>
+  <tr>
+    <td><%= c.laid_on %></td>
+    <td><% if @dragon.male%><%= c.f_dragon.number %><% else %><%= c.m_dragon.number %><% end %></td>
+    <td><%= c.viable %></td>
+    <td><%= c.total %></td>
+    <td><%= c.hatches.sum(:hatchlings) %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to "Add New Clutch", new_dragon_clutch_path(@dragon.id) %>
 </p>
 
 <p>
