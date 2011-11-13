@@ -7,18 +7,16 @@
     <th>Source</th>
     <th>Group</th>
     <th>Status</th>
-    <th>Male</th>
-    <th>User</th>
+    <th>Sex</th>
   </tr>
   <% for dragon in @dragons %>
     <tr>
       <td><%= dragon.number %></td>
       <td><%= dragon.clutch_id %></td>
-      <td><%= dragon.source_id %></td>
-      <td><%= dragon.group_id %></td>
-      <td><%= dragon.status_id %></td>
-      <td><%= dragon.male %></td>
-      <td><%= dragon.user_id %></td>
+      <td><%= dragon.source.name %></td>
+      <td><%= dragon.group.name %></td>
+      <td><%= dragon.status.name %></td>
+      <td><%= sex(dragon.male) %></td>
       <td><%= link_to "Show", dragon %></td>
       <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
       <td><%= link_to "Destroy", dragon, :confirm => 'Are you sure?', :method => :delete %></td>

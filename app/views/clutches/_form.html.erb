@@ -20,9 +20,7 @@
     <%= f.label :m_dragon_id %><br />
     <%= f.collection_select :m_dragon_id, Dragon.find(:all, :conditions => 
                                                                 { :male => true,
-                                                              :breeding => true,
-                                                              :deceased => false,
-                                                           :hibernating => false
+                                                             :status_id => 2,
                                                                 }
     ), :id, :number %>
   </p>
@@ -30,9 +28,7 @@
     <%= f.label :f_dragon_id %><br />
     <%= f.collection_select :f_dragon_id, Dragon.find(:all, :conditions => 
                                                                 { :male => false,
-                                                              :breeding => true,
-                                                              :deceased => false,
-                                                           :hibernating => false
+                                                             :status_id => 2
                                                                 }
     ), :id, :number %>
  </p>

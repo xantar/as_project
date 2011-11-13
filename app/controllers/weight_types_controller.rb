@@ -14,7 +14,7 @@ class WeightTypesController < ApplicationController
   def create
     @weight_type = WeightType.new(params[:weight_type])
     if @weight_type.save
-      redirect_to @weight_type, :notice => "Successfully created weight type."
+      redirect_to weight_types_url, :notice => "Successfully created weight type."
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class WeightTypesController < ApplicationController
   def update
     @weight_type = WeightType.find(params[:id])
     if @weight_type.update_attributes(params[:weight_type])
-      redirect_to @weight_type, :notice  => "Successfully updated weight type."
+      redirect_to weight_types_url, :notice  => "Successfully updated weight type."
     else
       render :action => 'edit'
     end

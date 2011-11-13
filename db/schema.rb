@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20111112045658) do
 
   create_table "morphs", :force => true do |t|
     t.integer  "dragon_id"
-    t.integer  "morph_type"
+    t.integer  "morph_type_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

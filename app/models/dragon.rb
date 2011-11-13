@@ -6,6 +6,7 @@ class Dragon < ActiveRecord::Base
   belongs_to :clutch
   belongs_to :source
   belongs_to :status
+  belongs_to :group
   
   belongs_to :user
 

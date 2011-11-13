@@ -10,23 +10,47 @@
 </p>
 <p>
   <strong>Source:</strong>
-  <%= @dragon.source_id %>
+  <%= @dragon.source.name %>
 </p>
 <p>
   <strong>Group:</strong>
-  <%= @dragon.group_id %>
+  <%= @dragon.group.name %>
 </p>
 <p>
   <strong>Status:</strong>
-  <%= @dragon.status_id %>
+  <%= @dragon.status.name %>
 </p>
 <p>
-  <strong>Male:</strong>
-  <%= @dragon.male %>
+  <strong>Sex:</strong>
+  <%= sex(@dragon.male) %>
 </p>
 <p>
-  <strong>User:</strong>
-  <%= @dragon.user_id %>
+  <strong>Morph Characteristics:</strong>
+  <table>
+  <% @dragon.morphs.each do |w| %>
+  <tr>
+    <td><%= w.morph_type.name %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to "Add New Morph Characteristic", new_dragon_morph_path(@dragon.id) %>
+</p>
+
+<p>
+  <strong>Weight History:</strong>
+  <table>
+  <th>Type</th>
+  <th>Date</th>
+  <th>Weight</th>
+  <% @dragon.weights.each do |w| %>
+  <tr>
+    <td><%= w.weight_type.name %></td>
+    <td><%= w.weighed_on %></td>
+    <td><%= w.weight %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to "Add New Weight", new_dragon_weight_path(@dragon.id) %>
 </p>
 
 <p>

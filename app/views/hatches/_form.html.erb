@@ -2,7 +2,7 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :clutch_id %><br />
-    <%= f.number_field :clutch_id %>
+    <%= f.collection_select :clutch_id, Clutch.all, :id, :name %>
   </p>
   <p>
     <%= f.label :out_on %><br />
@@ -11,10 +11,6 @@
   <p>
     <%= f.label :hatchlings %><br />
     <%= f.number_field :hatchlings %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
   </p>
   <p><%= f.submit %></p>
 <% end %>

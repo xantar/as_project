@@ -14,7 +14,7 @@ class SourcesController < ApplicationController
   def create
     @source = Source.new(params[:source])
     if @source.save
-      redirect_to @source, :notice => "Successfully created source."
+      redirect_to sources_url, :notice => "Successfully created source."
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class SourcesController < ApplicationController
   def update
     @source = Source.find(params[:id])
     if @source.update_attributes(params[:source])
-      redirect_to @source, :notice  => "Successfully updated source."
+      redirect_to sources_url, :notice  => "Successfully updated source."
     else
       render :action => 'edit'
     end

@@ -1,7 +1,7 @@
 AsProject::Application.routes.draw do
   resources :sources
 
-  resources :groups
+  resources :groups 
 
   resources :statuses
 
@@ -17,7 +17,13 @@ AsProject::Application.routes.draw do
 
   resources :weights
 
-  resources :dragons
+  resources :dragons do
+
+    resources :weights
+
+    resources :morphs
+
+  end
 
   resources :sources
 

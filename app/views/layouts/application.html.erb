@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<% session[:referer] = request.referer  %>
+
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
@@ -8,6 +10,7 @@
     <%= yield(:head) %>
   </head>
   <body>
+    <nav><%= link_to "Dragons", dragons_url %><%= link_to "Morphs", morphs_url  %><%= link_to "weights", weights_url %><%= link_to "Statuses", statuses_url %><%= link_to "Sources", sources_url %><%= link_to "Morph Types", morph_types_url %><%= link_to "Weight Types", weight_types_url %></nav>
     <div id="container">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>

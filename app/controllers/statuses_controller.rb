@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
   def create
     @status = Status.new(params[:status])
     if @status.save
-      redirect_to @status, :notice => "Successfully created status."
+      redirect_to statuses_url, :notice => "Successfully created status."
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class StatusesController < ApplicationController
   def update
     @status = Status.find(params[:id])
     if @status.update_attributes(params[:status])
-      redirect_to @status, :notice  => "Successfully updated status."
+      redirect_to statuses_url, :notice  => "Successfully updated status."
     else
       render :action => 'edit'
     end

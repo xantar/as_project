@@ -14,7 +14,7 @@ class WeightsController < ApplicationController
   def create
     @weight = Weight.new(params[:weight])
     if @weight.save
-      redirect_to @weight, :notice => "Successfully created weight."
+      redirect_to session[:referer], :notice => "Successfully created weight."
     else
       render :action => 'new'
     end

@@ -2,4 +2,9 @@
 
 <%= render 'form' %>
 
+
+<% if params[:dragon_id] %>
+<p><%= link_to "Back to Dragon ##{Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).number}", dragon_path(params[:dragon_id]) %></p>
+<% else %>
 <p><%= link_to "Back to List", weights_path %></p>
+<% end %>

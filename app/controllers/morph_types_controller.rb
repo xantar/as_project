@@ -14,7 +14,7 @@ class MorphTypesController < ApplicationController
   def create
     @morph_type = MorphType.new(params[:morph_type])
     if @morph_type.save
-      redirect_to @morph_type, :notice => "Successfully created morph type."
+      redirect_to morph_types_path, :notice => "Successfully created morph type."
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class MorphTypesController < ApplicationController
   def update
     @morph_type = MorphType.find(params[:id])
     if @morph_type.update_attributes(params[:morph_type])
-      redirect_to @morph_type, :notice  => "Successfully updated morph type."
+      redirect_to morph_types_path, :notice  => "Successfully updated morph type."
     else
       render :action => 'edit'
     end
