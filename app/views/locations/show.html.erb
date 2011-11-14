@@ -1,0 +1,28 @@
+<% title "Location" %>
+
+<p>
+  <strong>Dragon:</strong>
+  <%= @location.dragon_id %>
+</p>
+<p>
+  <strong>Room:</strong>
+  <%= @location.room %>
+</p>
+<p>
+  <strong>Column:</strong>
+  <%= @location.column %>
+</p>
+<p>
+  <strong>Row:</strong>
+  <%= @location.row %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @location.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_location_path(@location) %> |
+  <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", locations_path %>
+</p>

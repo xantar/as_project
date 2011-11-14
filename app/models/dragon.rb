@@ -14,4 +14,6 @@ class Dragon < ActiveRecord::Base
   has_many :clutches , :foreign_key => "m_dragon_id"
   has_many :clutches , :foreign_key => "f_dragon_id"
   has_many :morphs
+  has_many :treatments
+  has_many :locations
 end

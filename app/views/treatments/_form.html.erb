@@ -1,0 +1,17 @@
+<%= form_for @treatment do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :dragon_id %><br />
+    <%= f.collection_select :dragon_id, Dragon.all, :id, :number, :selected => params[:dragon_id] %>
+  </p>
+  <p>
+    <%= f.label :treated_on %><br />
+    <%= f.date_select :treated_on %>
+  </p>
+  <p>
+    <%= f.label :medication_id %><br />
+    <%= f.collection_select :medication_id, Medication.all, :id, :name %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>

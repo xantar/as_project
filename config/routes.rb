@@ -1,4 +1,10 @@
 AsProject::Application.routes.draw do
+  resources :treatments
+
+  resources :medications
+
+  resources :locations
+
   resources :sources
 
   resources :groups 
@@ -9,7 +15,7 @@ AsProject::Application.routes.draw do
 
   resources :clutches do
 
-    resources :hatches
+    resources :hatches, :only => :new
 
   end
 
@@ -23,11 +29,13 @@ AsProject::Application.routes.draw do
 
   resources :dragons do
 
-    resources :weights
+    resources :weights, :only => :new
 
-    resources :morphs
+    resources :morphs, :only => :new
 
-    resources :clutches
+    resources :clutches, :only => :new
+
+    resources :treatments, :only => :new
 
   end
 

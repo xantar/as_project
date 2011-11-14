@@ -35,7 +35,6 @@
   </table>
   <%= link_to "Add New Morph Characteristic", new_dragon_morph_path(@dragon.id) %>
 </p>
-
 <p>
   <strong>Weight History:</strong>
   <table>
@@ -51,6 +50,21 @@
   <% end %>
   </table>
   <%= link_to "Add New Weight", new_dragon_weight_path(@dragon.id) %>
+</p>
+
+<p>
+  <strong>Medical History:</strong>
+  <table>
+  <th>Date</th>
+  <th>Medication</th>
+  <% @dragon.treatments.each do |t| %>
+  <tr>
+    <td><%= t.treated_on %></td>
+    <td><%= t.medication.name %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to "Add New Treatment", new_dragon_treatment_path(@dragon.id) %>
 </p>
 
 <p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111112045658) do
+ActiveRecord::Schema.define(:version => 20111113231755) do
 
   create_table "clutches", :force => true do |t|
     t.date     "laid_on"
@@ -53,6 +53,24 @@ ActiveRecord::Schema.define(:version => 20111112045658) do
     t.datetime "updated_at"
   end
 
+  create_table "locations", :force => true do |t|
+    t.integer  "dragon_id"
+    t.integer  "room"
+    t.integer  "column"
+    t.integer  "row"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medications", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "usage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "morph_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -75,6 +93,15 @@ ActiveRecord::Schema.define(:version => 20111112045658) do
 
   create_table "statuses", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "treatments", :force => true do |t|
+    t.integer  "dragon_id"
+    t.date     "treated_on"
+    t.integer  "medication_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

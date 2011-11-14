@@ -6,7 +6,7 @@
   </p>
   <p>
     <%= f.label :clutch_id %><br />
-    <%= f.collection_select :clutch_id, Clutch.all, :id, :name %>
+    <%= f.collection_select :clutch_id, Clutch.all, :id, :name, {:include_blank => 'None'} %>
   </p>
   <p>
     <%= f.label :source_id %><br />

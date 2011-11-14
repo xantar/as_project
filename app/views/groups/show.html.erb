@@ -6,6 +6,32 @@
 </p>
 
 <p>
+<strong>Dragons:</strong>
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Clutch</th>
+    <th>Source</th>
+    <th>Group</th>
+    <th>Status</th>
+    <th>Sex</th>
+  </tr>
+  <% for dragon in @group.dragons %>
+    <tr>
+      <td><%= dragon.number %></td>
+      <td><%= dragon.clutch_id %></td>
+      <td><%= dragon.source.name %></td>
+      <td><%= dragon.group.name %></td>
+      <td><%= dragon.status.name %></td>
+      <td><%= sex(dragon.male) %></td>
+      <td><%= link_to "Show", dragon %></td>
+      <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
+      <td><%= link_to "Destroy", dragon, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+</p>
+<p>
   <%= link_to "Edit", edit_group_path(@group) %> |
   <%= link_to "Destroy", @group, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", groups_path %>

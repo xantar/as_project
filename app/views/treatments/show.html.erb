@@ -1,0 +1,24 @@
+<% title "Treatment" %>
+
+<p>
+  <strong>Dragon:</strong>
+  <%= @treatment.dragon_id %>
+</p>
+<p>
+  <strong>Treated On:</strong>
+  <%= @treatment.treated_on %>
+</p>
+<p>
+  <strong>Medication:</strong>
+  <%= @treatment.medication_id %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @treatment.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_treatment_path(@treatment) %> |
+  <%= link_to "Destroy", @treatment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", treatments_path %>
+</p>
