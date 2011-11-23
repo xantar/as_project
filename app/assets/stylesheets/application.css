@@ -23,6 +23,18 @@ nav a {
   margin: 0 15px;
 }
 
+div.field {
+  border: solid 1px;
+  margin-top: 20px;
+}
+
+div.field p.title {
+  background: #000;
+  color: #FFF;
+  margin: 0;
+  padding: 4px;
+}
+
 .clear {
   clear: both;
   height: 0;

@@ -1,5 +1,5 @@
 class Dragon < ActiveRecord::Base
-  attr_accessible :number, :clutch_id, :source_id, :group_id, :status_id, :male, :user_id
+  attr_accessible :id, :number, :clutch_id, :source_id, :group_id, :status_id, :male, :user_id
 
   validates_length_of :number, :minimum => 3
 
@@ -11,9 +11,17 @@ class Dragon < ActiveRecord::Base
   belongs_to :user
 
   has_many :weights
-  has_many :clutches , :foreign_key => "m_dragon_id"
-  has_many :clutches , :foreign_key => "f_dragon_id"
+
   has_many :morphs
   has_many :treatments
   has_many :locations
+
+
+  def clutches
+    if self.male
+      Clutch.find(:all, :conditions => {:m_dragon_id => self.id}, :order => "laid_on")
+    else
+      Clutch.find(:all, :conditions => {:f_dragon_id => self.id}, :order => "laid_on")
+    end
+  end
 end

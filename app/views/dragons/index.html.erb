@@ -11,15 +11,13 @@
   </tr>
   <% for dragon in @dragons %>
     <tr>
-      <td><%= dragon.number %></td>
-      <td><%= dragon.clutch_id %></td>
-      <td><%= dragon.source.name %></td>
-      <td><%= dragon.group.name %></td>
-      <td><%= dragon.status.name %></td>
+      <td><%= link_to(dragon.number, dragon) %></td>
+      <td><% if dragon.clutch %><%= link_to(dragon.clutch.name, clutch_path(dragon.clutch.id)) %><% end %></td>
+      <td><%= link_to(dragon.source.name, source_path(dragon.source.id)) %></td>
+      <td><%= link_to(dragon.group.name, group_path(dragon.group.id)) %></td>
+      <td><%= link_to(dragon.status.name, status_path(dragon.status.id)) %></td>
       <td><%= sex(dragon.male) %></td>
-      <td><%= link_to "Show", dragon %></td>
       <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
-      <td><%= link_to "Destroy", dragon, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

@@ -6,26 +6,32 @@
 </p>
 <p>
   <strong>Clutch:</strong>
-  <%= @dragon.clutch_id %>
+  <% if @dragon.clutch %>
+  <%= link_to(@dragon.clutch.name, clutch_path(@dragon.clutch.id)) %>
+  <% else %>
+   -- N/A --
+  <% end %>
 </p>
 <p>
   <strong>Source:</strong>
-  <%= @dragon.source.name %>
+  <%= link_to(@dragon.source.name, source_path(@dragon.source.id)) %>
 </p>
 <p>
   <strong>Group:</strong>
-  <%= @dragon.group.name %>
+  <%= link_to(@dragon.group.name, group_path(@dragon.group.id)) %>
 </p>
 <p>
   <strong>Status:</strong>
-  <%= @dragon.status.name %>
+  <%= link_to(@dragon.status.name, status_path(@dragon.status.id)) %>
 </p>
 <p>
   <strong>Sex:</strong>
   <%= sex(@dragon.male) %>
 </p>
-<p>
+<div class="field">
+<p class="title">
   <strong>Morph Characteristics:</strong>
+</p>
   <table>
   <% @dragon.morphs.each do |m| %>
   <tr>
@@ -34,14 +40,17 @@
   <% end %>
   </table>
   <%= link_to "Add New Morph Characteristic", new_dragon_morph_path(@dragon.id) %>
-</p>
-<p>
+</div>
+
+<div class="field">
+<p class="title">
   <strong>Weight History:</strong>
+</p>
   <table>
-  <th>Type</th>
-  <th>Date</th>
+  <th width=30%>Type</th>
+  <th width=50%>Date</th>
   <th>Weight</th>
-  <% @dragon.weights.each do |w| %>
+  <% @dragon.weights.sort_by(&:weighed_on).each do |w| %>
   <tr>
     <td><%= w.weight_type.name %></td>
     <td><%= w.weighed_on %></td>
@@ -50,35 +59,39 @@
   <% end %>
   </table>
   <%= link_to "Add New Weight", new_dragon_weight_path(@dragon.id) %>
-</p>
+</div>
 
-<p>
+<div class="field">
+<p class="title">
   <strong>Medical History:</strong>
+</p>
   <table>
   <th>Date</th>
   <th>Medication</th>
-  <% @dragon.treatments.each do |t| %>
+  <% @dragon.treatments.sort_by(&:treated_on).each do |t| %>
   <tr>
-    <td><%= t.treated_on %></td>
+    <td><%= link_to(t.treated_on, treatment_path(t.id)) %></td>
     <td><%= t.medication.name %></td>
   </tr>
   <% end %>
   </table>
   <%= link_to "Add New Treatment", new_dragon_treatment_path(@dragon.id) %>
-</p>
+</div>
 
-<p>
+<div class="field">
+<p class="title">
   <strong>Clutch History:</strong>
+</p>
   <table>
-  <th>Date</th>
-  <th>Mate</th>
-  <th>Viable</th>
-  <th>Total</th>
-  <th>Hatched</th>
+  <th width=28%>Date</th>
+  <th width=10%>Mate</th>
+  <th class="number">Viable</th>
+  <th class="number">Total</th>
+  <th class="number">Hatched</th>
   <% @dragon.clutches.each do |c| %>
   <tr>
-    <td><%= c.laid_on %></td>
-    <td><% if @dragon.male%><%= c.f_dragon.number %><% else %><%= c.m_dragon.number %><% end %></td>
+    <td><%= link_to(c.laid_on, clutch_path(c.id)) %></td>
+    <td><% if @dragon.male %><%= link_to(c.f_dragon.number, dragon_path(c.f_dragon.id)) %><% else %><%= link_to(c.m_dragon.number, dragon_path(c.m_dragon.id)) %><% end %></td>
     <td><%= c.viable %></td>
     <td><%= c.total %></td>
     <td><%= c.hatches.sum(:hatchlings) %></td>
@@ -86,10 +99,8 @@
   <% end %>
   </table>
   <%= link_to "Add New Clutch", new_dragon_clutch_path(@dragon.id) %>
-</p>
+</div>
 
 <p>
   <%= link_to "Edit", edit_dragon_path(@dragon) %> |
-  <%= link_to "Destroy", @dragon, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", dragons_path %>
 </p>

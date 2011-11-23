@@ -7,7 +7,6 @@
   <% for weight_type in @weight_types %>
     <tr>
       <td><%= weight_type.name %></td>
-      <td><%= link_to "Show", weight_type %></td>
       <td><%= link_to "Edit", edit_weight_type_path(weight_type) %></td>
       <td><%= link_to "Destroy", weight_type, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

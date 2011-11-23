@@ -3,25 +3,24 @@
 <table>
   <tr>
     <th>Laid On</th>
+    <th>M Dragon</th>
+    <th>F Dragon</th>
     <th>Viable</th>
     <th>Questionable</th>
     <th>Total</th>
-    <th>M Dragon</th>
-    <th>F Dragon</th>
     <th>Comments</th>
   </tr>
   <% for clutch in @clutches %>
     <tr>
       <td><%= clutch.laid_on %></td>
+      <td><%= link_to(clutch.m_dragon.number, dragon_path(clutch.m_dragon.id)) %></td>
+      <td><%= link_to(clutch.f_dragon.number, dragon_path(clutch.f_dragon.id)) %></td>
       <td><%= clutch.viable %></td>
       <td><%= clutch.questionable %></td>
       <td><%= clutch.total %></td>
-      <td><%= clutch.m_dragon.number %></td>
-      <td><%= clutch.f_dragon.number %></td>
       <td><%= clutch.comments %></td>
       <td><%= link_to "Show", clutch %></td>
       <td><%= link_to "Edit", edit_clutch_path(clutch) %></td>
-      <td><%= link_to "Destroy", clutch, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

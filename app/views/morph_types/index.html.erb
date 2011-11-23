@@ -6,8 +6,7 @@
   </tr>
   <% for morph_type in @morph_types %>
     <tr>
-      <td><%= morph_type.name %></td>
-      <td><%= link_to "Show", morph_type %></td>
+      <td><%= link_to(morph_type.name, morph_type) %></td>
       <td><%= link_to "Edit", edit_morph_type_path(morph_type) %></td>
       <td><%= link_to "Destroy", morph_type, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

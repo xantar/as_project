@@ -1,9 +1,32 @@
-<% title "Morph Type" %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @morph_type.name %>
+<% title "Morph Type : #{@morph_type.name}" %>
+<div class="field">
+<p class="title">
+  <strong>Dragons</strong>
 </p>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Clutch</th>
+    <th>Group</th>
+    <th>Status</th>
+    <th>Weight</th>
+    <th>Sex</th>
+  </tr>
+  <% @morph_type.morphs.each do |m| %>
+    <tr>
+      <td><%= link_to(m.dragon.number, dragon_path(m.dragon.id)) %></td>
+      <td><% if m.dragon.clutch %><%= link_to(m.dragon.clutch.name, clutch_path(m.dragon.clutch.id)) %><% end %></td>
+      <td><%= link_to(m.dragon.group.name, group_path(m.dragon.group.id))  %></td>
+      <td><%= link_to(m.dragon.status.name, status_path(m.dragon.status.id)) %></td>
+      <td><% if m.dragon.weights.count > 0 %><%= m.dragon.weights.sort_by(&:weighed_on).last.weight %><% end %></td>
+      <td><%= sex(m.dragon.male) %></td>
+      <td><%= link_to "Edit", edit_dragon_path(m.dragon) %></td>
+    </tr>
+  <% end %>
+</table>
+
+</div>
 
 <p>
   <%= link_to "Edit", edit_morph_type_path(@morph_type) %> |

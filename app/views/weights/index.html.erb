@@ -10,12 +10,10 @@
   </tr>
   <% for weight in @weights %>
     <tr>
-      <td><%= weight.dragon.number %></td>
+      <td><%= link_to(weight.dragon.number, dragon_path(weight.dragon.id)) %></td>
       <td><%= weight.weighed_on %></td>
       <td><%= weight.weight %></td>
       <td><%= weight.weight_type.name %></td>
-      <td><%= weight.user_id %></td>
-      <td><%= link_to "Show", weight %></td>
       <td><%= link_to "Edit", edit_weight_path(weight) %></td>
       <td><%= link_to "Destroy", weight, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

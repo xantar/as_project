@@ -18,36 +18,39 @@
 </p>
 <p>
   <strong>M Dragon:</strong>
-  <% if @clutch.m_dragon %><%= @clutch.m_dragon.number %><% end %>
+  <% if @clutch.m_dragon %><%= link_to(@clutch.m_dragon.number, dragon_path(@clutch.m_dragon.id)) %><% end %>
 </p>
 <p>
   <strong>F Dragon:</strong>
-  <% if @clutch.f_dragon %><%= @clutch.f_dragon.number %><% end %> 
+  <% if @clutch.f_dragon %><%= link_to(@clutch.f_dragon.number, dragon_path(@clutch.f_dragon.id)) %><% end %> 
 </p>
 <p>
   <strong>Comments:</strong>
   <%= @clutch.comments %>
 </p>
-<p>
+<div class="field">
+<p class="title">
   <strong>Hatches:</strong>
+</p>
   <table>
-  <th>Date:</th>
-  <th>Hatchlings</th>
+  <th width=60%>Date</th>
+  <th width=40%>Hatchlings</th>
   <% @clutch.hatches.each do |h| %>
   <tr>
-    <td><%= h.out_on %></td>
+    <td><%= link_to(h.out_on, hatch_path(h.id)) %></td>
     <td><%= h.hatchlings %></td>
   </tr>
   <% end %>
   </table>
   <%= link_to "Add New Hatch", new_clutch_hatch_path(@clutch.id) %>
-</p>
-<p>
+</div>
+<div class="field">
+<p class="title">
   <strong>Dragons:</strong>
+</p>
 <table>
   <tr>
     <th>Number</th>
-    <th>Clutch</th>
     <th>Source</th>
     <th>Group</th>
     <th>Status</th>
@@ -55,22 +58,18 @@
   </tr>
   <% for dragon in @clutch.dragons %>
     <tr>
-      <td><%= dragon.number %></td>
-      <td><%= dragon.clutch_id %></td>
-      <td><%= dragon.source.name %></td>
-      <td><%= dragon.group.name %></td>
-      <td><%= dragon.status.name %></td>
+      <td><%= link_to(dragon.number, dragon_path(dragon.id)) %></td>
+      <td><%= link_to(dragon.source.name, source_path(dragon.source.id)) %></td>
+      <td><%= link_to(dragon.group.name, group_path(dragon.group.id))  %></td>
+      <td><%= link_to(dragon.status.name, status_path(dragon.status.id)) %></td>
       <td><%= sex(dragon.male) %></td>
-      <td><%= link_to "Show", dragon %></td>
       <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
-      <td><%= link_to "Destroy", dragon, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-</p>
+</div>
 
 <p>
   <%= link_to "Edit", edit_clutch_path(@clutch) %> |
-  <%= link_to "Destroy", @clutch, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", clutches_path %>
 </p>
