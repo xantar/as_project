@@ -41,6 +41,7 @@ table {
 
 table td,th {
   padding: 1px 5px;
+  vertical-align: top;
 }
 
 .clear {

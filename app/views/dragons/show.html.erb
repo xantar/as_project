@@ -29,6 +29,42 @@
   <%= @dragon.clutches.count %>
 </p>
 
+<% if @dragon.clutch %>
+<div class="field">
+  <p class="title">
+    <strong>Inheritance</strong>
+  </p>
+  <table>
+    <tr>
+      <td width=50%><strong>Father: <%= link_to(@dragon.clutch.m_dragon.number, dragon_path(@dragon.clutch.m_dragon.id)) %></strong></td>
+      <td width=50%><strong>Mother: <%= link_to(@dragon.clutch.f_dragon.number, dragon_path(@dragon.clutch.f_dragon.id)) %></strong></td>
+  </tr>
+  <tr>
+      <td>
+        <strong>Morph:</strong>
+        <ul>
+          <% @dragon.clutch.m_dragon.morphs.each do |m| %>
+            <%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <strong>Morph:</strong>
+        <ul>
+          <% @dragon.clutch.f_dragon.morphs.each do |m| %>
+            <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+          <% end %>
+        </ul>
+      </td>
+  </tr>
+  <tr>
+    <td><strong>Clutches: </strong><%= @dragon.clutch.m_dragon.clutches.count %></td>
+    <td><strong>Clutches: </strong><%= @dragon.clutch.m_dragon.clutches.count %></td>
+  </tr>
+</table>
+</div>
+<% end %>
+
 <div class="field">
 <p class="title">
   <strong>Morph Characteristics:</strong>
@@ -101,5 +137,5 @@
 </div>
 
 <p>
-  <%= link_to "Edit", edit_dragon_path(@dragon) %> |
+  <%= link_to "Edit", edit_dragon_path(@dragon) %> 
 </p>
