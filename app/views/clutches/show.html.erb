@@ -5,6 +5,13 @@
   <%= @clutch.laid_on %>
 </p>
 <p>
+  <strong>M Dragon:</strong>
+  <% if @clutch.m_dragon %><%= link_to(@clutch.m_dragon.number, dragon_path(@clutch.m_dragon.id)) %><% end %>
+</p>
+<p>
+  <strong>F Dragon:</strong>
+  <% if @clutch.f_dragon %><%= link_to(@clutch.f_dragon.number, dragon_path(@clutch.f_dragon.id)) %><% end %> 
+</p><p>
   <strong>Viable:</strong>
   <%= @clutch.viable %>
 </p>
@@ -15,14 +22,6 @@
 <p>
   <strong>Total:</strong>
   <%= @clutch.total %>
-</p>
-<p>
-  <strong>M Dragon:</strong>
-  <% if @clutch.m_dragon %><%= link_to(@clutch.m_dragon.number, dragon_path(@clutch.m_dragon.id)) %><% end %>
-</p>
-<p>
-  <strong>F Dragon:</strong>
-  <% if @clutch.f_dragon %><%= link_to(@clutch.f_dragon.number, dragon_path(@clutch.f_dragon.id)) %><% end %> 
 </p>
 <p>
   <strong>Comments:</strong>
@@ -41,6 +40,10 @@
     <td><%= h.hatchlings %></td>
   </tr>
   <% end %>
+  <tr>
+    <td> Total: </td>
+    <td> <%= @clutch.hatches.sum(:hatchlings)  %> </td>
+  </tr>
   </table>
   <%= link_to "Add New Hatch", new_clutch_hatch_path(@clutch.id) %>
 </div>

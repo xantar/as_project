@@ -1,9 +1,5 @@
-<% title "Dragon" %>
+<% title "Dragon: #{@dragon.number}" %>
 
-<p>
-  <strong>Number:</strong>
-  <%= @dragon.number %>
-</p>
 <p>
   <strong>Clutch:</strong>
   <% if @dragon.clutch %>
@@ -28,17 +24,20 @@
   <strong>Sex:</strong>
   <%= sex(@dragon.male) %>
 </p>
+<p>
+  <strong>Total Clutches:</strong>
+  <%= @dragon.clutches.count %>
+</p>
+
 <div class="field">
 <p class="title">
   <strong>Morph Characteristics:</strong>
 </p>
-  <table>
+  <ul>
   <% @dragon.morphs.each do |m| %>
-  <tr>
-    <td><%= m.morph_type.name %></td>
-  </tr>
+    <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
   <% end %>
-  </table>
+  </ul>
   <%= link_to "Add New Morph Characteristic", new_dragon_morph_path(@dragon.id) %>
 </div>
 
@@ -85,9 +84,9 @@
   <table>
   <th width=28%>Date</th>
   <th width=10%>Mate</th>
-  <th class="number">Viable</th>
-  <th class="number">Total</th>
-  <th class="number">Hatched</th>
+  <th>Viable</th>
+  <th>Total</th>
+  <th>Hatched</th>
   <% @dragon.clutches.each do |c| %>
   <tr>
     <td><%= link_to(c.laid_on, clutch_path(c.id)) %></td>

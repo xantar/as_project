@@ -35,6 +35,14 @@ div.field p.title {
   padding: 4px;
 }
 
+table {
+  text-align: center;
+}
+
+table td,th {
+  padding: 1px 5px;
+}
+
 .clear {
   clear: both;
   height: 0;
