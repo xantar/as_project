@@ -1,4 +1,6 @@
 class MedicationsController < ApplicationController
+  before_filter :login_required
+
   def index
     @medications = Medication.all
   end

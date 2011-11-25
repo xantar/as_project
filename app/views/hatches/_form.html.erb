@@ -12,5 +12,6 @@
     <%= f.label :hatchlings %><br />
     <%= f.number_field :hatchlings %>
   </p>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <p><%= f.submit %></p>
 <% end %>

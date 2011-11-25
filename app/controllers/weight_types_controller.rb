@@ -1,4 +1,6 @@
 class WeightTypesController < ApplicationController
+  before_filter :login_required
+
   def index
     @weight_types = WeightType.all
   end

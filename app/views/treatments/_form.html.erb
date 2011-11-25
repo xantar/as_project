@@ -12,6 +12,6 @@
     <%= f.label :medication_id %><br />
     <%= f.collection_select :medication_id, Medication.all, :id, :name %>
   </p>
-
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <p><%= f.submit %></p>
 <% end %>

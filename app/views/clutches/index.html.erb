@@ -20,7 +20,9 @@
       <td><%= clutch.total %></td>
       <td><%= clutch.comments %></td>
       <td><%= link_to "Show", clutch %></td>
+      <% if access?(clutch.user_id) %>
       <td><%= link_to "Edit", edit_clutch_path(clutch) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

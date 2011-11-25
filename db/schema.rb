@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113231755) do
+ActiveRecord::Schema.define(:version => 20111124050509) do
 
   create_table "clutches", :force => true do |t|
     t.date     "laid_on"
@@ -108,14 +108,14 @@ ActiveRecord::Schema.define(:version => 20111113231755) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "access_level"
+    t.boolean  "manager"
+    t.boolean  "employeed"
   end
 
   create_table "weight_types", :force => true do |t|

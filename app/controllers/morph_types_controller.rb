@@ -1,4 +1,6 @@
 class MorphTypesController < ApplicationController
+  before_filter :login_required
+
   def index
     @morph_types = MorphType.all
   end

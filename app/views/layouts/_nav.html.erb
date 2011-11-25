@@ -1,1 +1,4 @@
-testesetst
+    <nav><%= link_to :Dragons, dragons_url %><%= link_to :Morphs, morphs_url  %><%= link_to :Weights, weights_url %><%= link_to :Clutches, clutches_url %><%= link_to :Hatches, hatches_url %><%= link_to :Treatments, treatments_url %></nav>
+<% if highaccess? %>
+    <nav><%= link_to :Groups, groups_url %><%= link_to :Statuses, statuses_url %><%= link_to :Sources, sources_url %><%= link_to :MorphTypes, morph_types_url %><%= link_to :WeightTypes, weight_types_url %><%= link_to :Medications, medications_url%><%= link_to :Users, users_url %></nav>
+<% end %>

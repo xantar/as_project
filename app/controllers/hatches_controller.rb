@@ -1,4 +1,6 @@
 class HatchesController < ApplicationController
+  before_filter :login_required
+
   def index
     @hatches = Hatch.all
   end

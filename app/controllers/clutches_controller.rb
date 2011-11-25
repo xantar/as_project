@@ -1,4 +1,6 @@
 class ClutchesController < ApplicationController
+  before_filter :login_required
+
   def index
     @clutches = Clutch.all
   end

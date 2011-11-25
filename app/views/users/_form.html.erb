@@ -4,10 +4,6 @@
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </p>
-  <p>
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
-  </p>
    <p>
     <%= f.label :firstname, "First Name" %><br />
     <%= f.text_field :firstname %>
@@ -16,6 +12,9 @@
     <%= f.text_field :lastname %>
   </p>
   <p>
+    <%= f.label :manager, "Manager Access" %><br />
+    <%= f.check_box :manager %>
+  </p>  <p>
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </p>

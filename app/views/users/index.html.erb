@@ -1,0 +1,17 @@
+<% title "Users" %>
+
+<table>
+  <tr>
+    <th>Username</th>
+  </tr>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= link_to(u.username, u) %></td>
+      <% if access?(u.id) %>
+      <td><%= link_to "Edit", edit_user_path(u) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User", new_user_path %></p>

@@ -1,4 +1,6 @@
 class DragonsController < ApplicationController
+  before_filter :login_required
+
   def index
     @dragons = Dragon.all
   end

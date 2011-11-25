@@ -24,11 +24,6 @@
     <%= f.label :male %><br />
     <%= f.check_box :male %>
   </p>
-  <p>
-<% if logged_in? %>
-    <%= f.label :user_id %><br />
-    <%= f.hidden_field :user_id, current_user.id %>
-  </p>
-<% end %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <p><%= f.submit %></p>
 <% end %>
