@@ -1,12 +1,21 @@
-<% title "Weight Type" %>
+<% title "Weight Type: #{@weight_type.name}" %>
+<table>
+<tr>
+<th>Dragon</th>
+<th>Weighed On</th>
+<th>Weight</th>
+</tr>
+<% @weight_type.weights.sort_by(&:weighed_on).each do |w| %>
+  <tr>
+    <td><%= link_to(w.dragon.number, w.dragon) %></td>
+    <td><%= w.weighed_on %></td>
+    <td><%= w.weight %></td>
+  </tr>
+  <% end %>
+  </table>
 
+<% if highaccess? %>
 <p>
-  <strong>Name:</strong>
-  <%= @weight_type.name %>
+  <%= link_to "Edit", edit_weight_type_path(@weight_type) %> 
 </p>
-
-<p>
-  <%= link_to "Edit", edit_weight_type_path(@weight_type) %> |
-  <%= link_to "Destroy", @weight_type, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", weight_types_path %>
-</p>
+<% end %>

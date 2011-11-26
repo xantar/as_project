@@ -13,8 +13,8 @@
   <%= @hatch.hatchlings %>
 </p>
 
+<% if highaccess? %>
 <p>
-  <%= link_to "Edit", edit_hatch_path(@hatch) %> |
-  <%= link_to "Destroy", @hatch, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", hatches_path %>
+  <%= link_to "Edit", edit_hatch_path(@hatch) %> 
 </p>
+<% end %>

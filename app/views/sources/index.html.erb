@@ -7,10 +7,16 @@
   <% for source in @sources %>
     <tr>
       <td><%= link_to(source.name, source) %></td>
-      <td><%= link_to "Edit", edit_source_path(source) %></td>
-      <td><%= link_to "Destroy", source, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if highaccess? %>
+        <td><%= link_to "Edit", edit_source_path(source) %></td>
+      <% end %>
+      <% if highaccess? && source.dragons.count == 0 %>
+        <td><%= link_to "Destroy", source, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
+<% if highaccess? %>
 <p><%= link_to "New Source", new_source_path %></p>
+<% end %>

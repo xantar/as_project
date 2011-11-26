@@ -71,7 +71,7 @@
 </p>
   <ul>
   <% @dragon.morphs.each do |m| %>
-    <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+    <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %><% if access?(m.user_id) %> - <%= link_to "Remove", m, :confirm => 'Are you sure?', :method => :delete %><% end %></li>
   <% end %>
   </ul>
   <%= link_to "Add New Morph Characteristic", new_dragon_morph_path(@dragon.id) %>
@@ -137,5 +137,5 @@
 </div>
 
 <p>
-  <%= link_to "Edit", edit_dragon_path(@dragon) %> 
+  <% if access?(@dragon.user_id) %><%= link_to "Edit", edit_dragon_path(@dragon) %><% end %>
 </p>

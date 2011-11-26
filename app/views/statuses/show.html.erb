@@ -15,13 +15,15 @@
       <td><%= link_to(dragon.group.name, group_path(dragon.group.id))  %></td>
       <td><% if dragon.weights.count > 0 %><%= dragon.weights.sort_by(&:weighed_on).last.weight %><% end %></td>
       <td><%= sex(dragon.male) %></td>
-      <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
+      <% if access?(dragon.user_id) %>
+        <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
+<% if highaccess? %>
 <p>
   <%= link_to "Edit", edit_status_path(@status) %> |
-  <%= link_to "Destroy", @status, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", statuses_path %>
 </p>
+<% end %>

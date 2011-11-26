@@ -13,8 +13,8 @@
   <%= @medication.usage %>
 </p>
 
+<% if highaccess? %>
 <p>
-  <%= link_to "Edit", edit_medication_path(@medication) %> |
-  <%= link_to "Destroy", @medication, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", medications_path %>
+  <%= link_to "Edit", edit_medication_path(@medication) %> 
 </p>
+<% end %>

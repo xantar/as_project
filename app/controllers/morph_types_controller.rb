@@ -1,5 +1,6 @@
 class MorphTypesController < ApplicationController
   before_filter :login_required
+  before_filter :access, :only => [:new, :create, :edit]
 
   def index
     @morph_types = MorphType.all

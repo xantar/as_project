@@ -6,8 +6,13 @@
   </tr>
   <% for status in @statuses %>
     <tr>
-      <td><%= link_to(status.name, status) %></td>
-      <td><%= link_to "Edit", edit_status_path(status) %></td>
+      <td><%= link_to status.name, status %></td>
+      <% if highaccess? %>
+        <td><%= link_to "Edit", edit_status_path(status) %></td>
+      <% end %>
+      <% if highaccess? && status.dragons.count == 0 %>
+        <td><%= link_to "Destroy", status, :config => "Are you sure?", :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

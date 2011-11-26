@@ -1,5 +1,5 @@
 AsProject::Application.routes.draw do
-  resources :treatments
+  resources :treatments, :except => [ :show ]
 
   resources :medications
 
@@ -11,17 +11,15 @@ AsProject::Application.routes.draw do
 
   resources :statuses
 
-  resources :hatches
+  resources :clutches, :shallow => true do
 
-  resources :clutches do
-
-    resources :hatches, :only => :new
+    resources :hatches, :except => [ :index ]
 
   end
 
   resources :morph_types
 
-  resources :morphs
+  resources :morphs, :except => [ :index, :show]
 
   resources :weight_types
 

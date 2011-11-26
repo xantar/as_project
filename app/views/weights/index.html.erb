@@ -6,7 +6,6 @@
     <th>Weighed On</th>
     <th>Weight</th>
     <th>Weight Type</th>
-    <th>User</th>
   </tr>
   <% for weight in @weights %>
     <tr>
@@ -17,7 +16,7 @@
       <% if access?(current_user.id) %>
         <td><%= link_to "Edit", edit_weight_path(weight) %></td>
         <% if highaccess? %>
-          <td><%= link_to "Destroy", weight, :confirm => 'Are you sure?', :method => :delete %></td>
+          <td><%= link_to "Remove", weight, :confirm => 'Are you sure?', :method => :delete %></td>
         <% end %>
       <% end %>
     </tr>

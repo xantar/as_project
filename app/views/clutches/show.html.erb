@@ -32,12 +32,15 @@
   <strong>Hatches:</strong>
 </p>
   <table>
-  <th width=60%>Date</th>
-  <th width=40%>Hatchlings</th>
+  <th width=100px>Date</th>
+  <th width=100px>Hatchlings</th>
   <% @clutch.hatches.each do |h| %>
   <tr>
     <td><%= link_to(h.out_on, hatch_path(h.id)) %></td>
     <td><%= h.hatchlings %></td>
+    <% if access?(h.user_id) %>
+      <td><%= link_to("Edit", edit_hatch_path(h.id)) %></td> 
+    <% end %>
   </tr>
   <% end %>
   <tr>
@@ -66,13 +69,16 @@
       <td><%= link_to(dragon.group.name, group_path(dragon.group.id))  %></td>
       <td><%= link_to(dragon.status.name, status_path(dragon.status.id)) %></td>
       <td><%= sex(dragon.male) %></td>
-      <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
+      <% if access?(dragon.user_id) %>
+        <td><%= link_to( "Edit", edit_dragon_path(dragon)) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 </div>
 
-<p>
-  <%= link_to "Edit", edit_clutch_path(@clutch) %> |
-  <%= link_to "View All", clutches_path %>
-</p>
+<% if access?(@clutch.user_id) %>
+  <p>
+    <%= link_to( "Edit", edit_clutch_path(@clutch)) %> 
+  </p>
+<% end %>

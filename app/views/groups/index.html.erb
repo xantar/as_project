@@ -7,10 +7,16 @@
   <% for group in @groups %>
     <tr>
       <td><%= link_to(group.name, group) %></td>
-      <td><%= link_to "Edit", edit_group_path(group) %></td>
-      <td><%= link_to "Destroy", group, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if highaccess? %>  
+        <td><%= link_to "Edit", edit_group_path(group) %></td>
+      <% end %>
+      <% if highaccess? && group.dragons.count ==0 %>
+        <td><%= link_to "Destroy", group, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
+<% if highaccess? %>
 <p><%= link_to "New Group", new_group_path %></p>
+<% end %>

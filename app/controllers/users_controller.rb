@@ -21,6 +21,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user.id == current_user.id || current_user.id == 1
+      if @user.manager || @user.id == 1
+        redirect_to users_path, :alert => "You do not have permission"
+      end
+    end
   end
 
   def update

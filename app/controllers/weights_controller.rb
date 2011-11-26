@@ -40,4 +40,6 @@ class WeightsController < ApplicationController
     @weight.destroy
     redirect_to weights_url, :notice => "Successfully destroyed weight."
   end
+
+  
 end

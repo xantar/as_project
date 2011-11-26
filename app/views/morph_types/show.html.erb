@@ -21,15 +21,17 @@
       <td><%= link_to(m.dragon.status.name, status_path(m.dragon.status.id)) %></td>
       <td><% if m.dragon.weights.count > 0 %><%= m.dragon.weights.sort_by(&:weighed_on).last.weight %><% end %></td>
       <td><%= sex(m.dragon.male) %></td>
-      <td><%= link_to "Edit", edit_dragon_path(m.dragon) %></td>
+      <% if access?(m.dragon.user_id) %>
+        <td><%= link_to "Edit", edit_dragon_path(m.dragon) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
 </div>
 
+<% if highaccess? %>
 <p>
-  <%= link_to "Edit", edit_morph_type_path(@morph_type) %> |
-  <%= link_to "Destroy", @morph_type, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", morph_types_path %>
+  <%= link_to "Edit", edit_morph_type_path(@morph_type) %> 
 </p>
+<% end %>

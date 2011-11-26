@@ -7,10 +7,16 @@
   <% for morph_type in @morph_types %>
     <tr>
       <td><%= link_to(morph_type.name, morph_type) %></td>
-      <td><%= link_to "Edit", edit_morph_type_path(morph_type) %></td>
-      <td><%= link_to "Destroy", morph_type, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if highaccess? %>
+        <td><%= link_to "Edit", edit_morph_type_path(morph_type) %></td>
+      <% end %>
+      <% if highaccess? && morph_type.morphs.count ==0 %>
+        <td><%= link_to "Destroy", morph_type, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
+<% if highaccess? %>
 <p><%= link_to "New Morph Type", new_morph_type_path %></p>
+<% end %>

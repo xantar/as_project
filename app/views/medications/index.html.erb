@@ -8,14 +8,19 @@
   </tr>
   <% for medication in @medications %>
     <tr>
-      <td><%= medication.name %></td>
+      <td><%= link_to(medication.name, medication) %></td>
       <td><%= medication.description %></td>
       <td><%= medication.usage %></td>
-      <td><%= link_to "Show", medication %></td>
-      <td><%= link_to "Edit", edit_medication_path(medication) %></td>
-      <td><%= link_to "Destroy", medication, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if highaccess? %>
+        <td><%= link_to "Edit", edit_medication_path(medication) %></td>
+      <% end %>
+      <% if highaccess? && medication.treatments.count == 0 %>
+        <td><%= link_to "Destroy", medication, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
+<% if highaccess? %>
 <p><%= link_to "New Medication", new_medication_path %></p>
+<% end %>

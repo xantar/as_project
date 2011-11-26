@@ -38,6 +38,6 @@ class MorphsController < ApplicationController
   def destroy
     @morph = Morph.find(params[:id])
     @morph.destroy
-    redirect_to morphs_url, :notice => "Successfully destroyed morph."
+    redirect_to :back, :notice => "Successfully destroyed morph."
   end
 end

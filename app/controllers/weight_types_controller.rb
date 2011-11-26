@@ -1,5 +1,6 @@
 class WeightTypesController < ApplicationController
   before_filter :login_required
+  before_filter :access, :only => [:new, :create, :edit]
 
   def index
     @weight_types = WeightType.all

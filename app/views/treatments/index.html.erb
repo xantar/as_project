@@ -5,17 +5,16 @@
     <th>Dragon</th>
     <th>Treated On</th>
     <th>Medication</th>
-    <th>User</th>
   </tr>
   <% for treatment in @treatments %>
     <tr>
-      <td><%= treatment.dragon_id %></td>
+      <td><%= link_to(treatment.dragon.number, treatment.dragon) %></td>
       <td><%= treatment.treated_on %></td>
-      <td><%= treatment.medication_id %></td>
-      <td><%= treatment.user_id %></td>
-      <td><%= link_to "Show", treatment %></td>
-      <td><%= link_to "Edit", edit_treatment_path(treatment) %></td>
-      <td><%= link_to "Destroy", treatment, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to(treatment.medication.name, treatment.medication) %></td>
+      <% if access?(treatment.user_id) %>
+        <td><%= link_to "Edit", edit_treatment_path(treatment) %></td>
+        <td><%= link_to "Destroy", treatment, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
