@@ -24,6 +24,9 @@ class HatchesController < ApplicationController
 
   def edit
     @hatch = Hatch.find(params[:id])
+    unless @hatch.user_id == current_user.id || current_user.manager || current_user==1
+      redirect_to session[:referer], :alert => "You do not have permission to edit"
+    end
   end
 
   def update

@@ -6,14 +6,17 @@
     <th>Out On</th>
     <th>Hatchlings</th>
   </tr>
-  <% for hatch in @hatches %>
+  <% for hatch in @hatches.sort_by(&:out_on).reverse %>
     <tr>
       <td><%= hatch.clutch.name %></td>
       <td><%= hatch.out_on %></td>
       <td><%= hatch.hatchlings %></td>
-      <td><%= link_to "Show", hatch %></td>
-      <td><%= link_to "Edit", edit_hatch_path(hatch) %></td>
-      <td><%= link_to "Destroy", hatch, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if access?(hatch.user_id) %>
+        <td><%= link_to "Edit", edit_hatch_path(hatch) %></td>
+      <% end %>
+      <% if highaccess? %>
+        <td><%= link_to "Destroy", hatch, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

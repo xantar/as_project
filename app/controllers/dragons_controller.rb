@@ -24,6 +24,9 @@ class DragonsController < ApplicationController
 
   def edit
     @dragon = Dragon.find(params[:id])
+    unless @dragon.user_id == current_user.id || current_user.manager || current_user==1
+      redirect_to dragons_path, :alert => "You do not have permission to edit #{@dragon.number}"
+    end
   end
 
   def update

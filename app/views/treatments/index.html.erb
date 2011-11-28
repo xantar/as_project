@@ -6,7 +6,7 @@
     <th>Treated On</th>
     <th>Medication</th>
   </tr>
-  <% for treatment in @treatments %>
+  <% for treatment in @treatments.sort_by(&:treated_on).reverse %>
     <tr>
       <td><%= link_to(treatment.dragon.number, treatment.dragon) %></td>
       <td><%= treatment.treated_on %></td>

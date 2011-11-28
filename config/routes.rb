@@ -1,6 +1,8 @@
 AsProject::Application.routes.draw do
   resources :treatments, :except => [ :show ]
 
+  resources :hatches, :except => [ :show ]
+
   resources :medications
 
   resources :locations
@@ -13,7 +15,7 @@ AsProject::Application.routes.draw do
 
   resources :clutches, :shallow => true do
 
-    resources :hatches, :except => [ :index ]
+    resources :hatches, :except => [ :index, :show ]
 
   end
 

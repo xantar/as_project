@@ -24,6 +24,9 @@ class ClutchesController < ApplicationController
 
   def edit
     @clutch = Clutch.find(params[:id])
+    unless @clutch.user_id == current_user.id || current_user.manager || current_user==1
+      redirect_to @clutch, :alert => "You do not have permission to edit #{@clutch.name}"
+    end
   end
 
   def update

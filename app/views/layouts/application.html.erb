@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<% session[:referer] = request.referer  %>
+<% session[:referer] = request.referer %>
 
 <html>
   <head>
@@ -11,8 +11,6 @@
   </head>
   <body>
       <% if logged_in? %>
-        Welcome <%= current_user.firstname %> <%= current_user.lastname %>! 
-        <%= link_to "Log out", logout_path %>
         <%= render "layouts/nav" %>
       <% end %>
     <div id="container">
@@ -24,3 +22,5 @@
     </div>
   </body>
 </html>
+
+

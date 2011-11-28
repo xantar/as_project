@@ -34,7 +34,7 @@
   <table>
   <th width=100px>Date</th>
   <th width=100px>Hatchlings</th>
-  <% @clutch.hatches.each do |h| %>
+  <% @clutch.hatches.sort_by(&:out_on).each do |h| %>
   <tr>
     <td><%= link_to(h.out_on, hatch_path(h.id)) %></td>
     <td><%= h.hatchlings %></td>

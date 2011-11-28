@@ -2,6 +2,7 @@ body {
   background-color: #4B7399;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
+  margin: 0;
 }
 
 a img {
@@ -10,6 +11,10 @@ a img {
 
 a {
   color: #0000FF;
+}
+
+h1 {
+  margin-top: 10px;
 }
 
 nav {
@@ -50,13 +55,45 @@ table td,th {
   overflow: hidden;
 }
 
+
+header {
+  background: #000;
+  color: #FFF;
+  padding: 8px 30px;
+  border-radius: 0 0 10px 10px;
+  border: solid 2px white;
+  border-top: 0;
+  box-shadow: 0 5px 10px #000;
+  width: 90%;
+  margin: 0 auto;
+}
+
+header a{
+  text-decoration:none;
+  font-weight:bold;
+}
+
+
+header a:hover{
+  text-color: DarkRed;
+}
+
+nav#basic {
+  width: 85%;
+  margin: 0 auto;
+}
+
+nav#admin {
+  width: 80%;
+  margin: 0 auto;
+}
+
 #container {
   width: 75%;
   margin: 0 auto;
   background-color: #FFF;
-  padding: 20px 40px;
+  padding: 0 20px;
   border: solid 1px black;
-  margin-top: 20px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -105,3 +142,5 @@ table td,th {
 .error_messages ul {
   margin: 0;
 }
+
+

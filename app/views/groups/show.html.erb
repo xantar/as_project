@@ -20,6 +20,9 @@
       <td><%= link_to(dragon.status.name, status_path(dragon.status.id)) %></td>
       <td><% if dragon.weights.count > 0 %><%= dragon.weights.sort_by(&:weighed_on).last.weight %><% end %></td>
       <td><%= sex(dragon.male) %></td>
+      <% if access?(dragon.user_id) %>
+        <td><%= link_to "Edit", edit_dragon_path(dragon.id) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
