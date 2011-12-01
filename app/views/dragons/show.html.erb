@@ -30,7 +30,7 @@
 </p>
 <div class="field">
 <p class="title">
-  <strong>Current Location:</strong><br />
+  <strong>Current Location:</strong><span class="history"><%= link_to "History", "#{dragon_path(@dragon.id)}/loc_history" %></span><br />
 </p>
 <% if @dragon.locations.count > 0 %>
 <table>
@@ -103,13 +103,13 @@ Unknown <br />
 
 <div class="field">
 <p class="title">
-  <strong>Weight History:</strong>
+  <strong>Weight History:</strong><span class="history"><%= link_to "History", "#{dragon_path(@dragon.id)}/weight_history" %></span>
 </p>
   <table>
   <th width=30%>Type</th>
   <th width=50%>Date</th>
   <th>Weight</th>
-  <% @dragon.weights.sort_by(&:weighed_on).each do |w| %>
+  <% @dragon.weights.sort_by(&:weighed_on).last(5).each do |w| %>
   <tr>
     <td><%= w.weight_type.name %></td>
     <td><%= w.weighed_on %></td>
@@ -161,5 +161,5 @@ Unknown <br />
 </div>
 
 <p>
-  <% if access?(@dragon.user_id) %><%= link_to "Edit", edit_dragon_path(@dragon) %><% end %>
+  <% if access?(@dragon.user_id) %><%= link_to "Edit #{@dragon.number}", edit_dragon_path(@dragon) %><% end %>
 </p>

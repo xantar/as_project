@@ -13,6 +13,8 @@ AsProject::Application.routes.draw do
 
   resources :statuses
 
+  resources :sources
+
   resources :clutches, :shallow => true do
 
     resources :hatches, :except => [ :index, :show ]
@@ -26,6 +28,8 @@ AsProject::Application.routes.draw do
   resources :weight_types
 
   resources :weights
+
+  match '/dragons/all' => 'dragons#all'
 
   resources :dragons do
 
@@ -41,7 +45,9 @@ AsProject::Application.routes.draw do
 
   end
 
-  resources :sources
+  match '/dragons/:id/loc_history' => 'dragons#lhistory'
+
+  match '/dragons/:id/weight_history' => 'dragons#whistory'
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 

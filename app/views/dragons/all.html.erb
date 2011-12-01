@@ -1,4 +1,4 @@
-<% title "Dragons" %>
+<% title "All Dragons" %>
 
 <table>
   <tr>
@@ -24,13 +24,10 @@
       <% if access?(dragon.user_id) %> 
         <td><%= link_to "Edit", edit_dragon_path(dragon) %></td>
       <% end %>
-      <% if access?(dragon.user_id) && dragon.weights.count == 0 && dragon.clutches.count == 0 && dragon.treatments.count ==0 %>
-        <td><%= link_to "Remove", dragon, :confirm => 'Are you sure?', :method => :delete %></td>
-      <% end %>
+      <% if access?(dragon.user_id) && dragon.weights.count == 0 && dragon.clutches.count == 0 && dragon.treatments.count ==0 %><td><%= link_to "Remove", dragon, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Dragon", new_dragon_path %> | 
-<%= link_to "Show All Dragons", "#{dragons_path}/all" %>
-</p>
+<p><%= link_to "New Dragon", new_dragon_path %></p>

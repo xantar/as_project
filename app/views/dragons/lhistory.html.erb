@@ -1,0 +1,29 @@
+<% title "Dragon: #{@dragon.number} - Location History" %>
+
+<div class="field">
+<p class="title">
+  <strong>Location History:</strong><br />
+</p>
+<table>
+  <tr>
+    <th>Moved On</th>
+    <th>Room</th>
+    <th>Column</th>
+    <th>Row</th>
+    <th>Cage</th>
+  </tr>
+<% @dragon.locations.each do |l| %>
+  <tr>
+    <td><%= l.moved_on %></td>
+    <td><%= l.room %></td>
+    <td><%= l.column %></td>
+    <td><%= l.row %></td>
+    <td><%= l.cage %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Change Location", new_dragon_location_path(@dragon.id) %>
+</div>
+<br/>
+  <%= link_to "Back to #{@dragon.number}", @dragon %>
+<br />

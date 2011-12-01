@@ -1,6 +1,6 @@
 class WeightTypesController < ApplicationController
   before_filter :login_required
-  before_filter :access, :only => [:new, :create, :edit]
+  before_filter :access, :only => [:new, :create, :edit, :destroy]
 
   def index
     @weight_types = WeightType.all
@@ -38,7 +38,11 @@ class WeightTypesController < ApplicationController
 
   def destroy
     @weight_type = WeightType.find(params[:id])
-    @weight_type.destroy
-    redirect_to weight_types_url, :notice => "Successfully destroyed weight type."
+    unless @weight_type.weights.count > 0
+      @weight_type.destroy
+      redirect_to weight_types_url, :notice => "Successfully destroyed weight type."
+    else
+      redirect_to weight_types_url, :alert => "Cannot Destroy weight type."
+    end
   end
 end

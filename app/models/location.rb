@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :dragon_id, :room, :column, :row, :cage, :user_id
+  attr_accessible :dragon_id, :moved_on, :room, :column, :row, :cage, :user_id
 
   belongs_to :dragon
 

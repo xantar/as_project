@@ -22,6 +22,9 @@
       <td><%= link_to "Show", clutch %></td>
       <% if access?(clutch.user_id) %>
       <td><%= link_to "Edit", edit_clutch_path(clutch) %></td>
+        <% unless clutch.hatches.count > 0 %>
+          <td><%= link_to "Remove", clutch, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

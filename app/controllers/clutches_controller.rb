@@ -40,7 +40,15 @@ class ClutchesController < ApplicationController
 
   def destroy
     @clutch = Clutch.find(params[:id])
-    @clutch.destroy
-    redirect_to clutches_url, :notice => "Successfully destroyed clutch."
+    if @clutch.user_id == current_user.id || current_user.manager || current_user==1
+      if @clutch.hatches.count > 0
+        @clutch.destroy
+        redirect_to clutches_url, :notice => "Successfully destroyed clutch."
+      else
+        redirect_to clutches_path, :alert => "You cannot delete #{@clutch.name}"
+      end
+    else
+      redirect_to clutches_path, :alert => "You do not have permission to delete #{@clutch.name}"
+    end
   end
 end

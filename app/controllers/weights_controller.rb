@@ -29,6 +29,9 @@ class WeightsController < ApplicationController
 
   def edit
     @weight = Weight.find(params[:id])
+    unless @weight.user_id == current_user.id || current_user.manager || current_user==1
+      redirect_to dragons_path, :alert => "You do not have permission to edit this weight"
+    end
   end
 
   def update
@@ -42,8 +45,12 @@ class WeightsController < ApplicationController
 
   def destroy
     @weight = Weight.find(params[:id])
-    @weight.destroy
-    redirect_to weights_url, :notice => "Successfully destroyed weight."
+    if @weight.user_id == current_user.id || current_user.manager || current_user==1
+      @weight.destroy
+      redirect_to weights_url, :notice => "Successfully destroyed weight."
+    else
+      redirect_to weights_path, :alert => "You do not have permission to delete"
+    end
   end
 
   

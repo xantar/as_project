@@ -40,7 +40,11 @@ class LocationsController < ApplicationController
 
   def destroy
     @location = Location.find(params[:id])
-    @location.destroy
-    redirect_to locations_url, :notice => "Successfully destroyed location."
+    if @location.user_id == current_user.id || current_user.manager || current_user==1
+      @location.destroy
+      redirect_to locations_url, :notice => "Successfully destroyed location."
+    else
+      redirect_to dragons_path, :alert => "You do not have permission to delete #{@location.dragon.number}'s location"
+    end
   end
 end

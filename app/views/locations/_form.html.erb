@@ -15,6 +15,10 @@
     <% end %>
   </p>
   <p>
+    <%= f.label :moved_on %><br />
+    <%= f.date_select :moved_on %>
+  </p>
+  <p>
   <div class="tablecell">
     <%= f.label :room %><br />
     <%= f.select :room, 0..10 %>

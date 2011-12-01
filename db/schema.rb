@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201072940) do
+ActiveRecord::Schema.define(:version => 20111201202824) do
 
   create_table "clutches", :force => true do |t|
     t.date     "laid_on"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20111201072940) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cage"
+    t.date     "moved_on"
   end
 
   create_table "medications", :force => true do |t|

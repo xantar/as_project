@@ -2,11 +2,23 @@ class DragonsController < ApplicationController
   before_filter :login_required
 
   def index
-    @dragons = Dragon.all
+    @dragons = Dragon.find(:all, :conditions => [ "status_id != 5" ]  )
   end
 
   def show
     @dragon = Dragon.find(params[:id])
+  end
+
+  def lhistory
+    @dragon = Dragon.find(params[:id])
+  end
+
+  def whistory
+    @dragon = Dragon.find(params[:id])
+  end
+
+  def all
+    @dragons = Dragon.all
   end
 
   def new
@@ -40,8 +52,12 @@ class DragonsController < ApplicationController
 
   def destroy
     @dragon = Dragon.find(params[:id])
-    @number = @dragon.number
-    @dragon.destroy
-    redirect_to dragons_url, :notice => "Successfully destroyed dragon: #{@number}."
+    if @dragon.user_id == current_user.id || current_user.manager || current_user==1
+      @number = @dragon.number
+      @dragon.destroy
+      redirect_to dragons_url, :notice => "Successfully destroyed dragon: #{@number}."
+    else
+      redirect_to dragons_path, :alert => "You do not have permission to delete #{@dragon.number}"
+    end
   end
 end

@@ -24,6 +24,9 @@ class TreatmentsController < ApplicationController
 
   def edit
     @treatment = Treatment.find(params[:id])
+    unless @weight.user_id == current_user.id || current_user.manager || current_user==1
+      redirect_to treatments_path, :alert => "You do not have permission to edit"
+    end
   end
 
   def update
@@ -37,7 +40,11 @@ class TreatmentsController < ApplicationController
 
   def destroy
     @treatment = Treatment.find(params[:id])
-    @treatment.destroy
-    redirect_to treatments_url, :notice => "Successfully destroyed treatment."
+    if @weight.user_id == current_user.id || current_user.manager || current_user==1
+      @treatment.destroy
+      redirect_to treatments_url, :notice => "Successfully destroyed treatment."
+    else
+      redirect_to treatments_path, :alert => "You do not have permission to delete"
+    end
   end
 end

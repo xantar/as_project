@@ -1,5 +1,6 @@
 class MedicationsController < ApplicationController
   before_filter :login_required
+  before_filter :access, :only => [:new, :create, :edit, :destroy]
 
   def index
     @medications = Medication.all

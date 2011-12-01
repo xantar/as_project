@@ -40,7 +40,11 @@ class HatchesController < ApplicationController
 
   def destroy
     @hatch = Hatch.find(params[:id])
-    @hatch.destroy
-    redirect_to hatches_url, :notice => "Successfully destroyed hatch."
+    if @hatch.user_id == current_user.id || current_user.manager || current_user==1
+      @hatch.destroy
+      redirect_to hatches_url, :notice => "Successfully destroyed hatch."
+    else
+      redirect_to hatches_path, :alert => "You do not have permission to delete hatch"
+    end
   end
 end

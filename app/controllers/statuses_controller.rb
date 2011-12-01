@@ -1,6 +1,6 @@
 class StatusesController < ApplicationController
   before_filter :login_required
-  before_filter :access, :only => [:new, :create, :edit]
+  before_filter :access, :only => [:new, :create, :edit, :delete]
 
   def index
     @statuses = Status.all
