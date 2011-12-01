@@ -40,7 +40,8 @@ class DragonsController < ApplicationController
 
   def destroy
     @dragon = Dragon.find(params[:id])
+    @number = @dragon.number
     @dragon.destroy
-    redirect_to dragons_url, :notice => "Successfully destroyed dragon."
+    redirect_to dragons_url, :notice => "Successfully destroyed dragon: #{@number}."
   end
 end

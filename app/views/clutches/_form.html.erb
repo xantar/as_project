@@ -5,25 +5,25 @@
     <%= f.date_select :laid_on %>
   </p>
   <p>
-    <%= f.label :viable %><br />
-    <%= f.select :viable, 0..50 %>
+    <div class="tablecell">
+      <%= f.label :viable %><br />
+      <%= f.select :viable, 0..50 %>
+    </div>
+    <div  class="tablecell">
+      <%= f.label :questionable %><br />
+      <%= f.select :questionable, 0..50 %>
+    </div>
+    <div class="tablecell">
+      <%= f.label :total %><br />
+      <%= f.select :total, 0..50 %>
+    </div>
   </p>
   <p>
-    <%= f.label :questionable %><br />
-    <%= f.select :questionable, 0..50 %>
-  </p>
-  <p>
-    <%= f.label :total %><br />
-    <%= f.select :total, 0..50 %>
-  </p>
-  <p>
+  <div class="tablecell">
     <%= f.label :m_dragon_id %><br />
     <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male %>
-    <%= f.collection_select :m_dragon_id, Dragon.find(:all, :conditions => 
-                                                                { :male => true,
-                                                             :status_id => 1,
-                                                                }
-    ), :id, :number, :selected => params[:dragon_id] %>
+    <strong><%= Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).number %></strong>
+    <%= f.hidden_field :dragon_id, :value => params[:dragon_id] %>
     <% else %>
     <%= f.collection_select :m_dragon_id, Dragon.find(:all, :conditions => 
                                                                 { :male => true,
@@ -31,22 +31,19 @@
                                                                 }
     ), :id, :number %>
     <% end %>
-  </p>
-  <p>
+  </div>
+  <div class="tablecell">
     <%= f.label :f_dragon_id %><br />
-    <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male %>
-    <%= f.collection_select :f_dragon_id, Dragon.find(:all, :conditions => 
-                                                                { :male => false,
-                                                             :status_id => 1,
-                                                                }
-    ), :id, :number %>
-    <% else %>
+    <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male == false %>
+    <strong><%= Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).number %></strong>
+    <%= f.hidden_field :dragon_id, :value => params[:dragon_id] %>    <% else %>
     <%= f.collection_select :f_dragon_id, Dragon.find(:all, :conditions => 
                                                                 { :male => false,
                                                              :status_id => 1,
                                                                 }
     ), :id, :number, :selected => params[:dragon_id] %>
     <% end %>
+  </div>
   </p>
   <p>
     <%= f.label :comments %><br />

@@ -2,23 +2,36 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :dragon_id %><br />
-    <%= f.number_field :dragon_id %>
+    <% unless params[:dragon_id] || controller.action_name == "edit" %>
+      <%= f.collection_select :dragon_id, Dragon.all, :id, :number, :selected => params[:dragon_id] %>
+    <% else %>
+      <% if controller.action_name == "new" %>
+        <h2><%= Dragon.find(:first, :conditions => { :id => params[:dragon_id]}).number %></h2>
+        <%= f.hidden_field :dragon_id, :value => params[:dragon_id]%>
+      <% else %>
+        <h2><%= @location.dragon.number %></h2>
+        <%= f.hidden_field :dragon_id, :value => @location.dragon_id %>
+      <% end %>
+    <% end %>
   </p>
   <p>
+  <div class="tablecell">
     <%= f.label :room %><br />
-    <%= f.number_field :room %>
+    <%= f.select :room, 0..10 %>
   </p>
-  <p>
+  <div class="tablecell">
     <%= f.label :column %><br />
-    <%= f.number_field :column %>
-  </p>
-  <p>
+    <%= f.select :column, 1..10 %>
+  </div>
+  <div class="tablecell">
     <%= f.label :row %><br />
-    <%= f.number_field :row %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </p>
+    <%= f.select :row, 1..4 %>
+  </div>
+  <div class="tablecell">
+    <%= f.label :cage %><br />
+    <%= f.select :cage, 1..6 %>
+  </div>
+  </p>  
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <p><%= f.submit %></p>
 <% end %>

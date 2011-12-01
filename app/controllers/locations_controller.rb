@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(params[:location])
     if @location.save
-      redirect_to @location, :notice => "Successfully created location."
+      redirect_to session[:referer], :notice => "Successfully created location."
     else
       render :action => 'new'
     end
@@ -24,6 +24,9 @@ class LocationsController < ApplicationController
 
   def edit
     @location = Location.find(params[:id])
+    unless @location.user_id == current_user.id || current_user.manager || current_user==1
+      redirect_to locations_path, :alert => "You do not have permission to edit #{@location.dragon.number}'s location"
+    end
   end
 
   def update

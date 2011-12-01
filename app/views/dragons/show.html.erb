@@ -28,6 +28,30 @@
   <strong>Total Clutches:</strong>
   <%= @dragon.clutches.count %>
 </p>
+<div class="field">
+<p class="title">
+  <strong>Current Location:</strong><br />
+</p>
+<% if @dragon.locations.count > 0 %>
+<table>
+  <tr>
+    <th>Room</th>
+    <th>Column</th>
+    <th>Row</th>
+    <th>Cage</th>
+  </tr>
+  <tr>
+    <td><%= @dragon.locations.last.room %></td>
+    <td><%= @dragon.locations.last.column %></td>
+    <td><%= @dragon.locations.last.row %></td>
+    <td><%= @dragon.locations.last.cage %></td>
+  </tr>
+</table>
+<% else %>
+Unknown <br />
+<% end %>
+<%= link_to "Change Location", new_dragon_location_path(@dragon.id) %>
+</div>
 
 <% if @dragon.clutch %>
 <div class="field">

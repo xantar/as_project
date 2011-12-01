@@ -37,6 +37,8 @@ AsProject::Application.routes.draw do
 
     resources :treatments, :only => :new
 
+    resources :locations, :only => :new
+
   end
 
   resources :sources

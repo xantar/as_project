@@ -40,6 +40,11 @@ div.field p.title {
   padding: 4px;
 }
 
+div.tablecell {
+  display: table-cell;
+  padding-right: 15px;
+}
+
 table {
   text-align: center;
 }
@@ -54,7 +59,6 @@ table td,th {
   height: 0;
   overflow: hidden;
 }
-
 
 header {
   background: #000;
@@ -78,14 +82,8 @@ header a:hover{
   text-color: DarkRed;
 }
 
-nav#basic {
-  width: 85%;
-  margin: 0 auto;
-}
-
-nav#admin {
-  width: 80%;
-  margin: 0 auto;
+#menu {
+  text-align: right;
 }
 
 #container {

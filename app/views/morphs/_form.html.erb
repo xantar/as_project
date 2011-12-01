@@ -2,7 +2,17 @@
   <%= f.error_messages %>
   <p>
     <%= f.label :dragon_id %><br />
-    <%= f.collection_select :dragon_id, Dragon.all, :id, :number, :selected => params[:dragon_id] %>
+    <% unless params[:dragon_id] || controller.action_name == "edit" %>
+      <%= f.collection_select :dragon_id, Dragon.all, :id, :number, :selected => params[:dragon_id] %>
+    <% else %>
+      <% if controller.action_name == "new" %>
+        <h2><%= Dragon.find(:first, :conditions => { :id => params[:dragon_id]}).number %></h2>
+        <%= f.hidden_field :dragon_id, :value => params[:dragon_id]%>
+      <% else %>
+        <h2><%= @morph.dragon.number %></h2>
+        <%= f.hidden_field :dragon_id, :value => @morph.dragon_id %>
+      <% end %>
+    <% end %>
   </p>
   <p>
     <%= f.label :morph_type_id %><br />
