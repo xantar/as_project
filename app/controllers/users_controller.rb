@@ -36,4 +36,11 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    @name = @user.username
+    @user.destroy
+    redirect_to users_url, :notice => "#{@name} successfully destroyed" 
+  end
 end

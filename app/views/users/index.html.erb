@@ -12,6 +12,9 @@
       <% if access?(u.id) %>
       <td><%= link_to "Edit", edit_user_path(u) %></td>
       <% end %>
+      <% if access?(u.id) && highaccess? &&u.unused %>
+        <td><%= link_to "Remove", u, :confirm => "Are you sure you want to remove #{u.username}?", :method => :delete  %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

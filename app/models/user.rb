@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :morphs
   has_many :dragons
   has_many :weights
+  has_many :treatments
+  has_many :locations
 
   # login can be either username or email address
 
@@ -25,6 +27,20 @@ class User < ActiveRecord::Base
       "Employeed"
     else
       "Dismissed"
+    end
+  end
+
+  def unused
+    if dragons.count > 0 ||
+       weights.count > 0 ||
+      clutches.count > 0 ||
+       hatches.count > 0 ||
+    treatments.count > 0 ||
+     locations.count > 0   
+
+      false
+    else
+      true
     end
   end
 
