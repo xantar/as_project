@@ -3,10 +3,12 @@
 <table>
   <tr>
     <th>Username</th>
+    <th>Status</th>
   </tr>
   <% @users.each do |u| %>
     <tr>
       <td><%= link_to(u.username, u) %></td>
+      <td><%= u.status %></td>
       <% if access?(u.id) %>
       <td><%= link_to "Edit", edit_user_path(u) %></td>
       <% end %>

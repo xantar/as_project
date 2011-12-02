@@ -5,8 +5,13 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:login], params[:password])
     if user
-      session[:user_id] = user.id
-      redirect_to_target_or_default root_url, :notice => "Logged in successfully."
+      if user.employeed
+        session[:user_id] = user.id
+        redirect_to_target_or_default root_url, :notice => "Logged in successfully."
+      else
+        flash.now[:alert] = "You are no longer employeed"
+        render :action => 'new'
+      end
     else
       flash.now[:alert] = "Invalid login or password."
       render :action => 'new'
