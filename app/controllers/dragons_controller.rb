@@ -2,7 +2,7 @@ class DragonsController < ApplicationController
   before_filter :login_required
 
   def index
-    @dragons = Dragon.find(:all, :conditions => [ "status_id != 5" ]  )
+    @dragons = Dragon.find(:all, :conditions => [ "status_id != 5 AND status_id != 6 AND status_id != 7" ]  )
   end
 
   def show
