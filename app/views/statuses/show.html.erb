@@ -22,8 +22,11 @@
   <% end %>
 </table>
 
-<% if highaccess? %>
 <p>
+<% if highaccess? %>
   <%= link_to "Edit", edit_status_path(@status) %> |
-</p>
 <% end %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{status_path(@status.id)}.xml" %></strong>
+</span>
+</p>

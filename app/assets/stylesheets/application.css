@@ -28,6 +28,10 @@ nav a {
   margin: 0 15px;
 }
 
+span.right {
+  float: right;
+}
+
 div.field {
   border: solid 1px;
   margin-top: 20px;

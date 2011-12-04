@@ -1,5 +1,5 @@
 class Dragon < ActiveRecord::Base
-  attr_accessible :id, :number, :clutch_id, :source_id, :group_id, :status_id, :male, :user_id
+  attr_accessible :id, :number, :clutch_id, :source_id, :group_id, :status_id, :male, :user_id, :fertile, :tracked
 
   validates_length_of :number, :minimum => 3
 
@@ -16,6 +16,13 @@ class Dragon < ActiveRecord::Base
   has_many :treatments
   has_many :locations
 
+  def sex
+    if male
+      "Male"
+    else
+      "Female"
+    end
+  end
 
   def clutches
     if self.male

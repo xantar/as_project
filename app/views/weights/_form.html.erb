@@ -3,7 +3,7 @@
   <p>
     <%= f.label :dragon_id %><br />
     <% unless params[:dragon_id] || controller.action_name == "edit" %>
-      <%= f.collection_select :dragon_id, Dragon.all, :id, :number, :selected => params[:dragon_id] %>
+      <%= f.collection_select :dragon_id, Dragon.find(:all, :joins => :status, :conditions => { :statuses => { :tracked => true } } ), :id, :number, :selected => params[:dragon_id] %>
     <% else %>
       <% if controller.action_name == "new" %>
         <h2><%= Dragon.find(:first, :conditions => { :id => params[:dragon_id]}).number %></h2>

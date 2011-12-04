@@ -2,11 +2,21 @@ class DragonsController < ApplicationController
   before_filter :login_required
 
   def index
-    @dragons = Dragon.find(:all, :conditions => [ "status_id != 5 AND status_id != 6 AND status_id != 7" ]  )
+    @dragons = Dragon.find(:all, :joins => :status, :conditions => { :statuses => { :tracked => true } })
+
+    respond_to do |format|
+      format.html
+      format.xml  
+    end
   end
 
   def show
     @dragon = Dragon.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.xml  
+    end
   end
 
   def lhistory

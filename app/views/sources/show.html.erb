@@ -23,9 +23,11 @@
     </tr>
   <% end %>
 </table>
-
-<% if highaccess? %>
 <p>
+<% if highaccess? %>
   <%= link_to "Edit", edit_source_path(@source) %> 
-</p>
 <% end %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{source_path(@source.id)}.xml" %></strong>
+</span>
+</p>

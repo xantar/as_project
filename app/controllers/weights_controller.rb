@@ -4,10 +4,10 @@ class WeightsController < ApplicationController
   def index
     @weights = Weight.all
 
-#    respond_to do |format|
-#      format.html # index.html.erb
-#      format.xml  { render :xml => @weights }
-#    end
+    respond_to do |format|
+      format.html
+      format.xml  
+    end
   end
 
   def show

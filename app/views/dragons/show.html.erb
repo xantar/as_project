@@ -30,7 +30,7 @@
 </p>
 <div class="field">
 <p class="title">
-  <strong>Current Location:</strong><span class="history"><%= link_to "History", "#{dragon_path(@dragon.id)}/loc_history" %></span><br />
+  <strong>Current Location:</strong><span class="right"><%= link_to "History", "#{dragon_path(@dragon.id)}/loc_history" %></span><br />
 </p>
 <% if @dragon.locations.count > 0 %>
 <table>
@@ -103,7 +103,7 @@ Unknown <br />
 
 <div class="field">
 <p class="title">
-  <strong>Weight History:</strong><span class="history"><%= link_to "History", "#{dragon_path(@dragon.id)}/weight_history" %></span>
+  <strong>Weight History:</strong><span class="right"><%= link_to "History", "#{dragon_path(@dragon.id)}/weight_history" %></span>
 </p>
   <table>
   <th width=30%>Type</th>

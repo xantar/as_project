@@ -19,4 +19,8 @@
   <% end %>
 </table>
 
-<p><%= link_to "New Treatment", new_treatment_path %></p>
+<p><%= link_to "New Treatment", new_treatment_path %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{treatments_path}.xml" %></strong>
+</span>
+</p>

@@ -23,4 +23,8 @@
   <% end %>
 </table>
 
-<p><%= link_to "New Weight", new_weight_path %></p>
+<p><%= link_to "New Weight", new_weight_path %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{weights_path}.xml" %></strong>
+</span>
+</p>

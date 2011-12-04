@@ -4,5 +4,15 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+  <p>
+  <div class="tablecell">
+    <%= f.label :tracked %><br />
+    <%= f.check_box :tracked %>
+  </div>
+  <div class="tablecell">
+    <%= f.label :fertile %><br />
+    <%= f.check_box :fertile %>
+  </div>
+  </p>
   <p><%= f.submit %></p>
 <% end %>
