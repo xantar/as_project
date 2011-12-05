@@ -19,7 +19,7 @@
       <td><%= link_to(dragon.group.name, group_path(dragon.group.id))%></td>
       <td><%= link_to(dragon.status.name, status_path(dragon.status.id)) %></td>
       <td><% if dragon.weights.count > 0 %><%= dragon.weights.sort_by(&:weighed_on).last.weight %><% end %></td>
-      <td><%= sex(dragon.male) %></td>
+      <td><%= dragon.sex %></td>
       <% if access?(dragon.user_id) %>
         <td><%= link_to "Edit", edit_dragon_path(dragon.id) %></td>
       <% end %>
@@ -28,8 +28,12 @@
 </table>
 </p>
 
-<% if highaccess? %>
 <p>
-  <%= link_to "Edit", edit_group_path(@group) %> |
-</p>
+  <%= link_to "Back", :back %>
+<% if highaccess? %>
+ | <%= link_to "Edit", edit_group_path(@group) %>
 <% end %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{group_path(@group)}.xml" %></strong>
+</span>
+</p>

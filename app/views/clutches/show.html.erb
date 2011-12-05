@@ -24,6 +24,10 @@
   <%= @clutch.total %>
 </p>
 <p>
+  <strong>Total Hatched:</strong>
+  <%= @clutch.hatches.sum(:hatchlings) %>
+</p>
+<p>
   <strong>Comments:</strong>
   <%= @clutch.comments %>
 </p>
@@ -68,7 +72,7 @@
       <td><%= link_to(dragon.source.name, source_path(dragon.source.id)) %></td>
       <td><%= link_to(dragon.group.name, group_path(dragon.group.id))  %></td>
       <td><%= link_to(dragon.status.name, status_path(dragon.status.id)) %></td>
-      <td><%= sex(dragon.male) %></td>
+      <td><%= dragon.sex %></td>
       <% if access?(dragon.user_id) %>
         <td><%= link_to( "Edit", edit_dragon_path(dragon)) %></td>
       <% end %>
@@ -77,8 +81,11 @@
 </table>
 </div>
 
+<p>
 <% if access?(@clutch.user_id) %>
-  <p>
-    <%= link_to( "Edit", edit_clutch_path(@clutch)) %> 
-  </p>
+  <%= link_to( "Edit", edit_clutch_path(@clutch)) %> 
 <% end %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{clutch_path(@clutch)}.xml" %></strong>
+</span>
+</p>

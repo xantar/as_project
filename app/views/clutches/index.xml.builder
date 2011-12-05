@@ -8,6 +8,7 @@ xml.clutches do
       xml.viable(c.viable)
       xml.questionable(c.questionable)
       xml.total(c.total)
+      xml.total_hatched(c.hatches.sum(:hatchlings))
       xml.comments(c.comments)
     end
   end

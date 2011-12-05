@@ -30,8 +30,12 @@
 
 </div>
 
-<% if highaccess? %>
 <p>
-  <%= link_to "Edit", edit_morph_type_path(@morph_type) %> 
-</p>
+  <%= link_to "Back", :back %>
+<% if highaccess? %>
+ | <%= link_to "Edit", edit_morph_type_path(@morph_type) %> 
 <% end %>
+<span class="right">
+<strong>Output: <%= link_to "XML", "#{morph_type_path(@morph_type)}.xml" %></strong>
+</span>
+</p>
