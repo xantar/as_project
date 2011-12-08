@@ -5,12 +5,12 @@ Reptile Breeding Tracker
 http://dragon.xantar.net
 
 ## Instalation:
-###  Pull From Github
-*  git init
-*  git pull git@github.com:cins465/xantar.git final
-###  Rake db:schema:load
-###  Rake db:populate
-###  Enjoy,
-*	The default admin account is:
-* 		 username:admin
-* 		 password:password
+###  1.Pull From Github
+-  git init
+-  git pull git@github.com:cins465/xantar.git final
+###  2.Rake db:schema:load
+###  3.Rake db:populate
+###  4.Enjoy,
+-	The default admin account is:
+- 		 username:admin
+- 		 password:password
