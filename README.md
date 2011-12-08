@@ -2,7 +2,7 @@ Reptile Breeding Tracker
 ========================
 # By Paul Benson
 
-http://dragon.xantar.net
+http://rbt.xantar.net
 
 ## Instalation:
 ###  1.Pull From Github
