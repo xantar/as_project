@@ -1,0 +1,30 @@
+<% title "User: #{@user.username}" %>
+
+<p>
+<strong>Name:</strong>
+<%= @user.firstname %> <%= @user.lastname %>
+</p>
+<p>
+<strong>Access:</strong>
+<% if @user.id == 1 %>
+Admin
+<% else %>
+  <%if @user.manager %>
+    Manager
+  <% else %>
+    Employee
+  <% end %>
+<% end %>
+</p>
+<p>
+<strong>Status:</strong>
+<%= @user.status %>
+</p>
+
+<p>
+<%= link_to( "Back", :back ) %>
+<% if access?(current_user.id) %>
+ | <%= link_to( "Edit", edit_user_path(@user.id) ) %>
+<% end %>
+</p>
+

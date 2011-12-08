@@ -1,6 +1,6 @@
 <header>
   <div id="login">
-    Welcome <%= current_user.firstname %> <%= current_user.lastname %>! 
+    Welcome <%= link_to( "#{current_user.firstname} #{current_user.lastname}", user_path(@current_user.id)) %>! 
     <%= link_to "Log out", logout_path %>
   </div>
   <div id="menu">
@@ -12,7 +12,7 @@
   <%= link_to :Hatches, hatches_url %>
   <%= link_to :Groups, groups_url %>
   <%= link_to :MorphTypes, morph_types_url %>
-  <%= link_to :locations, locations_url %>
+  <%= link_to :Locations, locations_url %>
 </nav>
 <% if highaccess? %>
 <nav id="admin">

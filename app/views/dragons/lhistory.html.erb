@@ -12,13 +12,16 @@
     <th>Row</th>
     <th>Cage</th>
   </tr>
-<% @dragon.locations.each do |l| %>
-  <tr>
+<% @dragon.locations.sort_by(&:moved_on).reverse.each do |l| %>
+  <tr class="<%= cycle("odd", "even") %>">
     <td><%= l.moved_on %></td>
     <td><%= l.room %></td>
     <td><%= l.column %></td>
     <td><%= l.row %></td>
     <td><%= l.cage %></td>
+      <% if access?(l.user_id) %> 
+        <td><%= link_to "Edit", edit_location_path(l) %></td>
+      <% end %>
   </tr>
 <% end %>
 </table>

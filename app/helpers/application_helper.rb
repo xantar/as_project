@@ -24,17 +24,25 @@ module ApplicationHelper
   end 
   
   def access?(id)  
-    unless id == 1
-      if (admin? || manager? || owner?(id) ) 
-        return true  
-      else  
-        return false  
-      end  
-    else
-      if(admin?)
-        return true
+  unless controller.controller_name == "users"
+    if (admin? || manager? || owner?(id) ) 
+      return true 
+    else 
+      return false 
+    end  
+  else
+      unless id == 1 || User.find(id).manager 
+        if (admin? || manager? || owner?(id) ) 
+          return true 
+        else 
+          return false 
+        end  
       else
-        return false
+        if(admin? || owner?(id))
+          return true
+        else
+          return false
+        end
       end
     end
   end  

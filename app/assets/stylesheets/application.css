@@ -97,9 +97,9 @@ header a:hover{
 
 #container {
   width: 75%;
-  margin: 0 auto;
+  margin: 0 auto 25px auto;
   background-color: #FFF;
-  padding: 0 20px;
+  padding: 0 20px 10px 20px;
   border: solid 1px black;
 }
 

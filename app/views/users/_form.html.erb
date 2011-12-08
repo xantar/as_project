@@ -11,14 +11,18 @@
     <%= f.label :lastname, "Last Name" %><br />
     <%= f.text_field :lastname %>
   </p>
+<% if highaccess? && @user.id != current_user.id %>
+<% if admin? %>
   <p>
     <%= f.label :manager, "Manager Access" %> 
     <%= f.check_box :manager %>
   </p>
+<% end %>
   <p>
     <%= f.label :employeed, "Employeed" %>
     <%= f.check_box :employeed %>
   </p>
+<% end %>
   <p>
     <%= f.label :password %><br />
     <%= f.password_field :password %>
@@ -29,3 +33,7 @@
   </p>
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 <% end %>
+
+<p>
+<%= link_to( "Back", :back ) %>
+</p>

@@ -45,10 +45,11 @@
     <td><%= @dragon.locations.last.column %></td>
     <td><%= @dragon.locations.last.row %></td>
     <td><%= @dragon.locations.last.cage %></td>
+    <% if access?(@dragon.locations.last.id) %><td><%= link_to("Edit", edit_location_path(@dragon.locations.last.id)) %></td><% end %>
   </tr>
 </table>
 <% else %>
-Unknown <br />
+No Known Location <br />
 <% end %>
 <%= link_to "Change Location", new_dragon_location_path(@dragon.id) %>
 </div>
@@ -109,11 +110,12 @@ Unknown <br />
   <th width=30%>Type</th>
   <th width=50%>Date</th>
   <th>Weight</th>
-  <% @dragon.weights.sort_by(&:weighed_on).last(5).each do |w| %>
+  <% @dragon.weights.sort_by(&:weighed_on).last(5).reverse.each do |w| %>
   <tr class="<%= cycle("odd", "even") %>">
     <td><%= w.weight_type.name %></td>
     <td><%= w.weighed_on %></td>
     <td><%= w.weight %></td>
+    <% if access?(w.user_id) || highaccess? %><td><%= link_to "Edit", edit_weight_path(w.id) %></td><% end %>
   </tr>
   <% end %>
   </table>
