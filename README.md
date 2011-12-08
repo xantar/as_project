@@ -8,9 +8,12 @@ http://dragon.xantar.net
 ###  1.Pull From Github
 -  git init
 -  git pull git@github.com:cins465/xantar.git final
+
 ###  2.Rake db:schema:load
+
 ###  3.Rake db:populate
+
 ###  4.Enjoy,
--	The default admin account is:
-- 		 username:admin
-- 		 password:password
+- The default admin account is:
+- 	 username:admin
+- 	 password:password
