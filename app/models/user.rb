@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates_format_of :username, :with => /^[-\w\._@]+$/i, :message => "should only contain letters, numbers, or .-_@"
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates_length_of :password, :minimum => 4
+  validates_length_of :password, :minimum => 4, :allow_blank => true
 
   has_many :clutches
   has_many :hatches

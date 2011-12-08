@@ -38,7 +38,8 @@ class DragonsController < ApplicationController
   def create
     @dragon = Dragon.new(params[:dragon])
     if @dragon.save
-      redirect_to @dragon, :notice => "Successfully created dragon."
+      redirect_to dragons_path, :notice => "Successfully created dragon."
+#      redirect_to @dragon, :notice => "Successfully created dragon."
     else
       render :action => 'new'
     end
@@ -46,7 +47,7 @@ class DragonsController < ApplicationController
 
   def edit
     @dragon = Dragon.find(params[:id])
-    unless @dragon.user_id == current_user.id || current_user.manager || current_user==1
+    unless @dragon.user_id == current_user.id || current_user.manager || current_user == 1 || !User.find(@dragon.user_id).employeed
       redirect_to dragons_path, :alert => "You do not have permission to edit #{@dragon.number}"
     end
   end
@@ -54,7 +55,7 @@ class DragonsController < ApplicationController
   def update
     @dragon = Dragon.find(params[:id])
     if @dragon.update_attributes(params[:dragon])
-      redirect_to @dragon, :notice  => "Successfully updated dragon."
+      redirect_to session[:referer], :notice  => "Successfully updated dragon."
     else
       render :action => 'edit'
     end

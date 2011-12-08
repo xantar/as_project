@@ -18,8 +18,12 @@ module ApplicationHelper
   def owner?(id)  
     if current_user.id == id  
       return true  
-    else  
-      return false  
+    else 
+      if User.find(id).employeed 
+        return false  
+      else
+        return true
+      end
     end  
   end 
   
