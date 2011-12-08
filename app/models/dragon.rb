@@ -1,7 +1,8 @@
 class Dragon < ActiveRecord::Base
   attr_accessible :id, :number, :clutch_id, :source_id, :group_id, :status_id, :male, :user_id, :fertile, :tracked
 
-#  validates_length_of :number, :minimum => 3
+  validates_presence_of :number
+  validates_length_of :number, :minimum => 2
 
   belongs_to :clutch
   belongs_to :source

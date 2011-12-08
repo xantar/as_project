@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
   before_save :prepare_password
 
   validates_presence_of :username
-  validates_uniqueness_of :username, :allow_blank => true
-  validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
+  validates_presence_of :firstname
+  validates_presence_of :lastname
+  validates_uniqueness_of :username
+  validates_format_of :username, :with => /^[-\w\._@]+$/i, :message => "should only contain letters, numbers, or .-_@"
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates_length_of :password, :minimum => 4, :allow_blank => true
+  validates_length_of :password, :minimum => 4
 
   has_many :clutches
   has_many :hatches
