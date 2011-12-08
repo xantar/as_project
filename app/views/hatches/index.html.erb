@@ -7,7 +7,7 @@
     <th>Hatchlings</th>
   </tr>
   <% for hatch in @hatches.sort_by(&:out_on).reverse %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= hatch.clutch.name %></td>
       <td><%= hatch.out_on %></td>
       <td><%= hatch.hatchlings %></td>

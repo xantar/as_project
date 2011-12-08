@@ -11,7 +11,7 @@
     <th>Comments</th>
   </tr>
   <% for clutch in @clutches.sort_by(&:laid_on).reverse %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= clutch.laid_on %></td>
       <td><%= link_to(clutch.m_dragon.number, dragon_path(clutch.m_dragon.id)) %></td>
       <td><%= link_to(clutch.f_dragon.number, dragon_path(clutch.f_dragon.id)) %></td>

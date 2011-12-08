@@ -6,7 +6,7 @@
     <th>Status</th>
   </tr>
   <% @users.each do |u| %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(u.username, u) %></td>
       <td><%= u.status %></td>
       <% if access?(u.id) %>

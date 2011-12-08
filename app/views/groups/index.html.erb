@@ -5,7 +5,7 @@
     <th>Name</th>
   </tr>
   <% for group in @groups %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(group.name, group) %></td>
       <% if highaccess? %>  
         <td><%= link_to "Edit", edit_group_path(group) %></td>

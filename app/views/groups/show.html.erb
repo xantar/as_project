@@ -12,7 +12,7 @@
     <th>Sex</th>
   </tr>
   <% for dragon in @group.dragons %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(dragon.number, dragon_path(dragon.id)) %></td>
       <td><% if dragon.clutch %><%= link_to(dragon.clutch.name, clutch_path(dragon.clutch.id)) %> <% end %></td>
       <td><%= link_to(dragon.source.name, source_path(dragon.source.id)) %></td>

@@ -8,7 +8,7 @@
     <th>Weight Type</th>
   </tr>
   <% for weight in @weights.sort_by(&:weighed_on).reverse %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(weight.dragon.number, dragon_path(weight.dragon.id)) %></td>
       <td><%= weight.weighed_on %></td>
       <td><%= weight.weight %></td>

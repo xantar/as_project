@@ -39,8 +39,8 @@
   <th width=100px>Date</th>
   <th width=100px>Hatchlings</th>
   <% @clutch.hatches.sort_by(&:out_on).each do |h| %>
-  <tr>
-    <td><%= link_to(h.out_on, hatch_path(h.id)) %></td>
+  <tr class="<%= cycle("odd", "even") %>">
+    <td><%= h.out_on %></td>
     <td><%= h.hatchlings %></td>
     <% if access?(h.user_id) %>
       <td><%= link_to("Edit", edit_hatch_path(h.id)) %></td> 
@@ -67,7 +67,7 @@
     <th>Sex</th>
   </tr>
   <% for dragon in @clutch.dragons %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(dragon.number, dragon_path(dragon.id)) %></td>
       <td><%= link_to(dragon.source.name, source_path(dragon.source.id)) %></td>
       <td><%= link_to(dragon.group.name, group_path(dragon.group.id))  %></td>

@@ -21,24 +21,15 @@
   <p>
   <div class="tablecell">
     <%= f.label :m_dragon_id %><br />
-    <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male %>
-    <strong><%= Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).number %></strong>
-    <%= f.hidden_field :dragon_id, :value => params[:dragon_id] %>
-    <% else %>
     <%= f.collection_select :m_dragon_id, Dragon.find(:all, :joins => :status,
                                                        :conditions => { :statuses => { :fertile => true }, :male => true },
                                                      ), :id, :number, :selected => params[:dragon_id] %>
-    <% end %>
   </div>
   <div class="tablecell">
     <%= f.label :f_dragon_id %><br />
-    <% if params[:dragon_id] && Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).male == false %>
-    <strong><%= Dragon.find(:first, :conditions => {:id => params[:dragon_id]}).number %></strong>
-    <%= f.hidden_field :dragon_id, :value => params[:dragon_id] %>    <% else %>
     <%= f.collection_select :f_dragon_id, Dragon.find(:all, :joins => :status,
                                                        :conditions => { :statuses => { :fertile => true }, :male => false },
                                                      ), :id, :number, :selected => params[:dragon_id] %>
-    <% end %>
   </div>
   </p>
   <p>

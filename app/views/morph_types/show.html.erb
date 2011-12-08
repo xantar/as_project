@@ -14,7 +14,7 @@
     <th>Sex</th>
   </tr>
   <% @morph_type.morphs.each do |m| %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(m.dragon.number, dragon_path(m.dragon.id)) %></td>
       <td><% if m.dragon.clutch %><%= link_to(m.dragon.clutch.name, clutch_path(m.dragon.clutch.id)) %><% end %></td>
       <td><%= link_to(m.dragon.group.name, group_path(m.dragon.group.id))  %></td>

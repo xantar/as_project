@@ -40,7 +40,7 @@
     <th>Row</th>
     <th>Cage</th>
   </tr>
-  <tr>
+  <tr  class="<%= cycle("odd", "even") %>">
     <td><%= @dragon.locations.last.room %></td>
     <td><%= @dragon.locations.last.column %></td>
     <td><%= @dragon.locations.last.row %></td>
@@ -110,7 +110,7 @@ Unknown <br />
   <th width=50%>Date</th>
   <th>Weight</th>
   <% @dragon.weights.sort_by(&:weighed_on).last(5).each do |w| %>
-  <tr>
+  <tr class="<%= cycle("odd", "even") %>">
     <td><%= w.weight_type.name %></td>
     <td><%= w.weighed_on %></td>
     <td><%= w.weight %></td>
@@ -148,7 +148,7 @@ Unknown <br />
   <th>Total</th>
   <th>Hatched</th>
   <% @dragon.clutches.each do |c| %>
-  <tr>
+  <tr class="<%= cycle("odd", "even") %>">
     <td><%= link_to(c.laid_on, clutch_path(c.id)) %></td>
     <td><% if @dragon.male %><%= link_to(c.f_dragon.number, dragon_path(c.f_dragon.id)) %><% else %><%= link_to(c.m_dragon.number, dragon_path(c.m_dragon.id)) %><% end %></td>
     <td><%= c.viable %></td>

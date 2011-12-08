@@ -50,12 +50,17 @@ div.tablecell {
 }
 
 table {
+  border-collapse: collapse;
   text-align: center;
 }
 
 table td,th {
   padding: 1px 5px;
   vertical-align: top;
+}
+
+table tr.even {
+  background: #DDD;
 }
 
 .clear {

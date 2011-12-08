@@ -9,7 +9,7 @@
     <th>Cage</th>
   </tr>
   <% for location in @locations.reverse.uniq(&:dragon_id).sort_by(&:cage).sort_by(&:row).sort_by(&:column).sort_by(&:room) %>
-    <tr>
+    <tr class="<%= cycle("odd", "even") %>">
       <td><%= link_to(location.dragon.number, location.dragon) %></td>
       <td><%= location.room %></td>
       <td><%= location.column %></td>
