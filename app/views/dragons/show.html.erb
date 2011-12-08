@@ -54,41 +54,142 @@ No Known Location <br />
 <%= link_to "Change Location", new_dragon_location_path(@dragon.id) %>
 </div>
 
-<% if @dragon.clutch %>
 <div class="field">
   <p class="title">
     <strong>Inheritance</strong>
   </p>
-  <table>
+<% if @dragon.clutch %>
+  <table width=100%>
+  <% if @dragon.clutch.f_dragon.clutch || @dragon.clutch.m_dragon.clutch %>
     <tr>
-      <td width=50%><strong>Father: <%= link_to(@dragon.clutch.m_dragon.number, dragon_path(@dragon.clutch.m_dragon.id)) %></strong></td>
-      <td width=50%><strong>Mother: <%= link_to(@dragon.clutch.f_dragon.number, dragon_path(@dragon.clutch.f_dragon.id)) %></strong></td>
-  </tr>
-  <tr>
-      <td>
-        <strong>Morph:</strong>
-        <ul>
-          <% @dragon.clutch.m_dragon.morphs.each do |m| %>
-            <%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %>
-          <% end %>
-        </ul>
-      </td>
-      <td>
-        <strong>Morph:</strong>
-        <ul>
-          <% @dragon.clutch.f_dragon.morphs.each do |m| %>
+    <% if @dragon.clutch.f_dragon.clutch %>
+      <% if @dragon.clutch.f_dragon.clutch.f_dragon %>
+        <td><strong>Mother's Mother:</strong> <%= link_to(@dragon.clutch.f_dragon.clutch.f_dragon.number, @dragon.clutch.f_dragon.clutch.f_dragon) %><br/>
+            <strong>Total Clutches:</strong> <%= @dragon.clutch.f_dragon.clutch.f_dragon.clutches.count %><br/>
+            <strong>Morph:</strong>
+            <ul>
+             <% @dragon.clutch.f_dragon.clutch.f_dragon.morphs.each do |m| %>
+              <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+            <% end %>
+            </ul>
+        </td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <% if @dragon.clutchfm_dragon.clutch.m_dragon %>
+        <td><strong>Mother's Father:</strong> <%= link_to(@dragon.clutch.f_dragon.clutch.m_dragon.number, @dragon.clutch.f_dragon.clutch.m_dragon) %><br/>
+            <strong>Total Clutches:</strong> <%= @dragon.clutch.f_dragon.clutch.m_dragon.clutches.count %><br/>
+            <strong>Morph:</strong>
+            <ul>
+             <% @dragon.clutch.f_dragon.clutch.m_dragon.morphs.each do |m| %>
+              <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+            <% end %>
+            </ul>
+        </td>
+      <% else %>
+        <td></td>
+      <% end %>
+    <% else %>
+      <td></td><td></td>
+    <% end %>    
+
+
+    <% if @dragon.clutch.m_dragon.clutch %>
+      <% if @dragon.clutch.m_dragon.clutch.f_dragon %>
+        <td><strong>Father's Mother:</strong> <%= link_to(@dragon.clutch.m_dragon.clutch.f_dragon.number, @dragon.clutch.m_dragon.clutch.f_dragon) %><br/>
+            <strong>Total Clutches:</strong> <%= @dragon.clutch.m_dragon.clutch.f_dragon.clutches.count %><br/>
+            <strong>Morph:</strong>
+            <ul>
+             <% @dragon.clutch.m_dragon.clutch.f_dragon.morphs.each do |m| %>
+              <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+            <% end %>
+            </ul>
+        </td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <% if @dragon.clutch.m_dragon.clutch.m_dragon %>
+        <td><strong>Father's Father:</strong> <%= link_to(@dragon.clutch.m_dragon.clutch.m_dragon.number, @dragon.clutch.m_dragon.clutch.m_dragon) %><br/>
+            <strong>Total Clutches:</strong> <%= @dragon.clutch.m_dragon.clutch.m_dragon.clutches.count %><br/>
+            <strong>Morph:</strong>
+            <ul>
+             <% @dragon.clutch.m_dragon.clutch.m_dragon.morphs.each do |m| %>
+              <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+            <% end %>
+            </ul>
+        </td>
+      <% else %>
+        <td></td>
+      <% end %>
+    <% else %>
+      <td></td><td></td>
+    <% end %>    
+    </tr>
+  <% end %>
+    <tr>
+      <td></td>
+    <% if @dragon.clutch.f_dragon %>
+      <td><strong>Mother:</strong> <%= link_to(@dragon.clutch.f_dragon.number, @dragon.clutch.f_dragon) %><br/>
+          <strong>Total Clutches</strong> <%= @dragon.clutch.f_dragon.clutches.count %><br/>
+          <strong>Morph:</strong>
+          <ul>
+           <% @dragon.clutch.f_dragon.morphs.each do |m| %>
             <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
           <% end %>
-        </ul>
+          </ul>
       </td>
-  </tr>
+    <% else %>
+      <td></td>
+    <% end %>
+    <% if @dragon.clutch.m_dragon %>
+      <td><strong>Father:</strong> <%= link_to(@dragon.clutch.m_dragon.number, @dragon.clutch.m_dragon) %><br/>
+          <strong>Total Clutches</strong> <%= @dragon.clutch.m_dragon.clutches.count %><br/>
+          <strong>Morph:</strong>
+          <ul>
+           <% @dragon.clutch.m_dragon.morphs.each do |m| %>
+            <li><%= link_to(m.morph_type.name, morph_type_path(m.morph_type.id)) %></li>
+          <% end %>
+          </ul>
+      </td>
+    <% else %>
+      <td></td>
+    <% end %>    
+      </td><td></td>
+    </tr>
+</table>
+<% else %>
+  <p><strong>No Known Parentage</strong></p>
+<% end %>
+</div>
+
+<div class="field">
+<p class="title">
+<strong>Offspring</strong>
+</p>
+<table>
   <tr>
-    <td><strong>Clutches: </strong><%= @dragon.clutch.m_dragon.clutches.count %></td>
-    <td><strong>Clutches: </strong><%= @dragon.clutch.m_dragon.clutches.count %></td>
+    <th>Number</th>
+    <th>Source</th>
+    <th>Group</th>
+    <th>Status</th>
+    <th>Sex</th>
   </tr>
+<% @dragon.clutches.each do |c| %>
+  <% c.dragons.each do |d| %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%= link_to(d.number, dragon_path(d)) %></td>
+      <td><%= link_to(d.source.name, source_path(d.source.id)) %></td>
+      <td><%= link_to(d.group.name, group_path(d.group.id))  %></td>
+      <td><%= link_to(d.status.name, status_path(d.status.id)) %></td>
+      <td><%= d.sex %></td>
+      <% if access?(d.user_id) %>
+        <td><%= link_to( "Edit", edit_dragon_path(d)) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+<% end %>
 </table>
 </div>
-<% end %>
 
 <div class="field">
 <p class="title">
