@@ -232,8 +232,8 @@ No Known Location <br />
   <th>Medication</th>
   <% @dragon.treatments.sort_by(&:treated_on).each do |t| %>
   <tr>
-    <td><%= link_to(t.treated_on, treatment_path(t.id)) %></td>
-    <td><%= t.medication.name %></td>
+    <td><%= t.treated_on %></td>
+    <td><%= link_to(t.medication.name, t.medication) %></td>
   </tr>
   <% end %>
   </table>

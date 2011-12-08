@@ -13,8 +13,9 @@
   <%= @medication.usage %>
 </p>
 
-<% if highaccess? %>
 <p>
-  <%= link_to "Edit", edit_medication_path(@medication) %> 
-</p>
+<%= link_to "Back", :back %>
+<% if highaccess? %>
+ | <%= link_to "Edit", edit_medication_path(@medication) %> 
 <% end %>
+</p>

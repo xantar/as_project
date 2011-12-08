@@ -24,8 +24,9 @@
   <% end %>
 </table>
 <p>
+<%= link_to "Back", :back %>
 <% if highaccess? %>
-  <%= link_to "Edit", edit_source_path(@source) %> 
+ |  <%= link_to "Edit", edit_source_path(@source) %> 
 <% end %>
 <span class="right">
 <strong>Output: <%= link_to "XML", "#{source_path(@source.id)}.xml" %></strong>
