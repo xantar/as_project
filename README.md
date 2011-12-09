@@ -2,6 +2,8 @@ Reptile Breeding Tracker
 ========================
 # By Paul Benson
 
+This Ruby on Rails app provides a tracking solution for reptile breeding, by tracking individuals, their offspring, medical history and current location.  With a focus on data entry and netbook/tablet access, it provides a viable system that can be used in field.
+
 http://rbt.xantar.net
 
 ## Instalation:
